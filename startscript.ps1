@@ -1,2 +1,2 @@
-get-service 
+get-service;
 [System.Windows.MessageBox]::Show('Hello')
