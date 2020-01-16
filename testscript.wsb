@@ -1,0 +1,9 @@
+<Configuration>
+    <VGpu>Enable</VGpu>
+    <Networking>Enable</Networking>
+    <MappedFolders>
+    </MappedFolders>
+    <LogonCommand>
+    <Command>powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/startscript.ps1'))</Command>
+    </LogonCommand>
+</Configuration>
