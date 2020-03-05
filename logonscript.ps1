@@ -41,5 +41,9 @@ $chocoapps = @(
 cinst -s chocosia -y Powershell 
 cinst -s chocosia -y --ignore-checksums $chocoapps
 #pause the script at the end to see the status.
-Write-Host -NoNewLine 'Press any key to continue...';
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+# Wait for key press
+Function WaitForKey {
+	Write-Host
+	Write-Host "Press any key to restart..." -ForegroundColor Black -BackgroundColor White
+	[Console]::ReadKey($true) | Out-Null
+WaitForKey
