@@ -55,7 +55,7 @@ foreach($item in $chocoapps){
 	# do something, like `Restart-Computer -Force`
     } 
     else {
-	Write-host "$item --------------❌" -ForegroundColor Red
+	Write-host "$item --------------" -ForegroundColor Red
     }
 }
 
