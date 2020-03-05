@@ -47,4 +47,5 @@ Function WaitForKey {
 	Write-Host
 	Write-Host "Press any key to restart..." -ForegroundColor Black -BackgroundColor White
 	[Console]::ReadKey($true) | Out-Null
+	}
 WaitForKey
