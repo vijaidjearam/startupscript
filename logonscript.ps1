@@ -39,4 +39,4 @@ $chocoapps = @(
     # "aimp",
 )
 cinst -s chocosia -y Powershell 
-cinst -s chocosia -y $chocoapps
+cinst -s chocosia -y --ignore-checksums $chocoapps
