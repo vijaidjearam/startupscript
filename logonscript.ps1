@@ -17,7 +17,6 @@ choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2
 
 #The packages that are not necessary can be commented with #
 $chocoapps = @(
-	"dotnetfx",
     	".7zip.install",
     	"adobeshockwaveplayer",
     	"ccleaner",
@@ -40,6 +39,7 @@ $chocoapps = @(
     	# "aimp",
 )
 cinst -s chocosia -y Powershell 
+cinst -s chocolatey -y dotnetfx
 cinst -s chocosia -y --ignore-checksums $chocoapps
 #pause the script at the end to see the status.
 # Wait for key press
