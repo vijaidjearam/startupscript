@@ -4,13 +4,10 @@
 try
 {
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) |Out-Null
-write-host " Chocolatey Install --------------✔"
-#[System.Windows.MessageBox]::Show('Chocolatey Installed Correctly')
 }
 catch
 {
 write-host "Problem encountered while installing chocolatey" 
-#[System.Windows.MessageBox]::Show('Problem Encountered during the installation of Chocolatey')
 }
 
 #Configuring internal chocolatey server
