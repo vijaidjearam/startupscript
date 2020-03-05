@@ -42,9 +42,5 @@ cinst -s chocosia -y Powershell
 cinst -s chocolatey -y dotnetfx
 cinst -s chocosia -y --ignore-checksums $chocoapps
 #pause the script at the end to see the status.
-# Wait for key press
-Function WaitForKey {
-	Write-Host "Press any key to restart..." -ForegroundColor Black -BackgroundColor White
-	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-	}
-WaitForKey
+Pause
+
