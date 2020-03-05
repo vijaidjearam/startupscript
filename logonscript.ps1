@@ -1,11 +1,11 @@
 #Add-Type -AssemblyName PresentationFramework
 #[System.Windows.MessageBox]::Show('Hello')
 #Installing Chocolatey
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) |Out-Null
+iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
 #catch{write-host "Problem encountered while installing chocolatey"}
 
 #Configuring internal chocolatey server
-choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 |Out-Null
+choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 | Out-Null
 write-host " Internal chocolatey configured --------------✔"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 |Out-Null
 
@@ -41,7 +41,7 @@ foreach($item in $chocoapps){
     Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host "$item --------------✔"} 
+    if($LASTEXITCODE -eq 0){write-host "$item --------------✔"}
     else{write-host "$item --------------❌"}
 }
 
