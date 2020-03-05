@@ -43,8 +43,20 @@ $chocoapps = @(
 cinst -s chocosia -y Powershell |Out-Null
 cinst -s chocolatey -y dotnet4.6.1 |Out-Null # dependency needed for dell command update
 cinst -s chocolatey -y dotnetfx |Out-Null
-cinst -s chocosia -y --ignore-checksums $chocoapps |Out-Null
-write-host "Packeges installed via chocolatey --------------✔"
+$counter = 0
+foreach($item in $chocoapps){
+    $counter++
+    Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
+    Start-Sleep -Milliseconds 200
+    cinst -s chocosia -y --ignore-checksums $item | Out-Null
+    if( $LASTEXITCODE -eq 0 ) {
+	    write-host "$item --------------✔" -ForegroundColor Green
+	# do something, like `Restart-Computer -Force`
+    } 
+    else {
+	    Write-host "$item --------------❌" -ForegroundColor Red
+    }
+}
 
 #pause the script at the end to see the status.
 Pause
