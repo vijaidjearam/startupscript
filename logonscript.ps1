@@ -51,11 +51,11 @@ foreach($item in $chocoapps){
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
     if( $LASTEXITCODE -eq 0 ) {
-	    write-host "$item --------------✔" -ForegroundColor Green
+	write-host "$item --------------✔" -ForegroundColor Green
 	# do something, like `Restart-Computer -Force`
     } 
     else {
-	    Write-host "$item --------------❌" -ForegroundColor Red
+	Write-host "$item --------------❌" -ForegroundColor Red
     }
 }
 
