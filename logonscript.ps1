@@ -1,14 +1,8 @@
 #Add-Type -AssemblyName PresentationFramework
 #[System.Windows.MessageBox]::Show('Hello')
 #Installing Chocolatey
-try
-{
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) |Out-Null
-}
-catch
-{
-write-host "Problem encountered while installing chocolatey" 
-}
+try{iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) |Out-Null}
+catch{write-host "Problem encountered while installing chocolatey"}
 
 #Configuring internal chocolatey server
 choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 |Out-Null
