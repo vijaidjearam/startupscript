@@ -44,8 +44,7 @@ cinst -s chocosia -y --ignore-checksums $chocoapps
 #pause the script at the end to see the status.
 # Wait for key press
 Function WaitForKey {
-	Write-Host
 	Write-Host "Press any key to restart..." -ForegroundColor Black -BackgroundColor White
-	[Console]::ReadKey($true) | Out-Null
+	$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 	}
 WaitForKey
