@@ -42,7 +42,7 @@ foreach($item in $chocoapps){
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
     if($LASTEXITCODE -eq 0){write-host "$item"}
-    else{write-host "$item --------------❌"}
+    else{write-host "$item"}
 }
 
 #pause the script at the end to see the status.
