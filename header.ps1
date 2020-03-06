@@ -1,10 +1,20 @@
+$FullUnicode = 'U+274C' # Unicode for whatever emoji you want to use.  274C is a cross mark button
+$StrippedUnicode = $FullUnicode -replace 'U\+',''
+$UnicodeInt = [System.Convert]::toInt32($StrippedUnicode,16)
+$cross = [System.Char]::ConvertFromUtf32($UnicodeInt)
+$FullUnicode = 'U+2714' # Unicode for whatever emoji you want to use.  2714 is a check mark button
+$StrippedUnicode = $FullUnicode -replace 'U\+',''
+$UnicodeInt = [System.Convert]::toInt32($StrippedUnicode,16)
+$check = [System.Char]::ConvertFromUtf32($UnicodeInt)
+
+
 write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
-write-host 'Chocolatey Installed Successfully --------------✔'
+write-host "Chocolatey Installed Successfully --------------$check"
 choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 | Out-Null
-write-host ' Internal chocolatey configured --------------✔'
+write-host "Internal chocolatey configured --------------$check"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 | Out-Null
-write-host 'chocolatey by default has been configured to priority 2 --------------✔'
+write-host "chocolatey by default has been configured to priority 2 --------------$check"
 $chocoapps = @(
     	"7zip.install",
         "dotnetfx"
@@ -38,8 +48,8 @@ foreach($item in $chocoapps){
     Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host $item'--------✔'}
-    else{write-host $item'-----------❌'}
+    if($LASTEXITCODE -eq 0){write-host $item'--------'$check}
+    else{write-host $item'-----------'$cross}
 }
 
 Pause
