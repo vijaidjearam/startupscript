@@ -10,7 +10,7 @@ $check = [System.Char]::ConvertFromUtf32($UnicodeInt)
 
 write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
-write-host "Chocolatey Installed Successfully --------------$check"
+write-host "Chocolatey Installed Successfully --------------✔"
 choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------$check"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 | Out-Null
