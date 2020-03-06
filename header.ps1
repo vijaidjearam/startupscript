@@ -1,13 +1,3 @@
-$FullUnicode = 'U+274C' # Unicode for whatever emoji you want to use.  274C is a cross mark button
-$StrippedUnicode = $FullUnicode -replace 'U\+',''
-$UnicodeInt = [System.Convert]::toInt32($StrippedUnicode,16)
-$cross = [System.Char]::ConvertFromUtf32($UnicodeInt)
-$FullUnicode = 'U+2714' # Unicode for whatever emoji you want to use.  2714 is a check mark button
-$StrippedUnicode = $FullUnicode -replace 'U\+',''
-$UnicodeInt = [System.Convert]::toInt32($StrippedUnicode,16)
-$check = [System.Char]::ConvertFromUtf32($UnicodeInt)
-
-
 write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
 write-host "Chocolatey Installed Successfully --------------OK"
@@ -48,8 +38,8 @@ foreach($item in $chocoapps){
     Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host $item'--------Ok}
-    else{write-host $item'-----------Nok' -foregroundcolor Red}
+    if($LASTEXITCODE -eq 0){write-host $item"--------"Ok}
+    else{write-host $item"-----------Nok" -ForegroundColor Red}
 }
 
 Pause
