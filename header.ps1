@@ -10,11 +10,11 @@ $check = [System.Char]::ConvertFromUtf32($UnicodeInt)
 
 write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
-write-host "Chocolatey Installed Successfully --------------✔"
+write-host "Chocolatey Installed Successfully --------------OK"
 choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 | Out-Null
-write-host "Internal chocolatey configured --------------$check"
+write-host "Internal chocolatey configured --------------Ok"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 | Out-Null
-write-host "chocolatey by default has been configured to priority 2 --------------$check"
+write-host "chocolatey by default has been configured to priority 2 --------------Ok"
 $chocoapps = @(
     	"7zip.install",
         "dotnetfx"
@@ -48,8 +48,8 @@ foreach($item in $chocoapps){
     Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host $item'--------'$check}
-    else{write-host $item'-----------'$cross}
+    if($LASTEXITCODE -eq 0){write-host $item'--------Ok}
+    else{write-host $item'-----------Nok' -foregroundcolor Red}
 }
 
 Pause
