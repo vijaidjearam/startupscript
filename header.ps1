@@ -38,8 +38,8 @@ foreach($item in $chocoapps){
     Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host $item+'--------✔'}
-    else{write-host $item+'-----------❌'}
+    if($LASTEXITCODE -eq 0){write-host $item'--------✔'}
+    else{write-host $item'-----------❌'}
 }
 
 Pause
