@@ -41,5 +41,6 @@ foreach($item in $chocoapps){
     if($LASTEXITCODE -eq 0){write-host $item+'--------✔'}
     else{write-host $item+'-----------❌'}
 }
+
 Pause
 
