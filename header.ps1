@@ -1,3 +1,4 @@
+write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
 choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 | Out-Null
 write-host " Internal chocolatey configured --------------✔"
