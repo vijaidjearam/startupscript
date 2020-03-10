@@ -1,4 +1,0 @@
-$WarningPreference = 'SilentlyContinue'
-write-host "Entering Windows-settings Configuration Stage" 
-Set-TaskbarOptions -Size Small
-Enable-RemoteDesktop
