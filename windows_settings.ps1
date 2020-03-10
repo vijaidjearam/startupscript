@@ -2,7 +2,7 @@ $WarningPreference = 'SilentlyContinue'
 write-host "Entering Windows-settings Configuration Stage" 
 Set-TaskbarOptions -Size Small
 Enable-RemoteDesktop
-set-ntpserver-urca
+set-ntpserver_urca
 
 
 
@@ -301,7 +301,7 @@ function Restart-Explorer {
         }
     } catch {$global:error.RemoveAt(0)}
 }
-function set-ntpserver-urca {
+function set-ntpserver_urca {
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "25" -Value "ntp-ts.univ-reims.fr" -PropertyType "string"
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "(Default)" -Value "25" -PropertyType "string"
 
