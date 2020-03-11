@@ -1,9 +1,21 @@
 $service_stop = @{
-  AdobeFlashPlayerUpdateSvc
-  AdobeARMservice
-  gupdate
-  Wsearch
-  WMPNetworkSvc
+  "AdobeFlashPlayerUpdateSvc",
+  "AdobeARMservice",
+  "gupdate",
+  "Wsearch",
+  "WMPNetworkSvc"
+}
+foreach($item in $service_stop){
+    $counter++
+    Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_stop.count) * 100)
+    Start-Sleep -Milliseconds 200
+    try{
+    stop-service -Name $item
+    write-Host "Stopped service-"$item"----------Nok" -ForeGroundColor Green
+    }
+    catch{
+    write-Host "Error stopping service-"$item"----------Nok" -ForeGroundColor RED
+    }
 }
 
-
+  
