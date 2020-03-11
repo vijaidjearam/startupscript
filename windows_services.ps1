@@ -11,31 +11,31 @@ $service_startup_disabled = @{
   "gupdate",
   "Wsearch",
   "WMPNetworkSvc",
-  SCardSvr,
-  DiagTrack 
-  SharedAccess 
-  WbioSrvc 
-  BDESVC 
-  Wlansvc
-  Wwansvc 
-  ehSched 
-  bthserv 
-  ehRecvr 
-  Mcx2Svc 
-  SCPolicySvc
-  Themes 
+  "SCardSvr",
+  "DiagTrack", 
+  "SharedAccess", 
+  "WbioSrvc", 
+  "BDESVC", 
+  "Wlansvc",
+  "Wwansvc", 
+  "ehSched", 
+  "bthserv",
+  "ehRecvr", 
+  "Mcx2Svc", 
+  "SCPolicySvc",
+  "Themes" 
 }
 $service_startup_delayed-auto = @{
-  nlasvc
-  RasAuto 
-  RasMan 
-  Winmgmt 
-  ose #Office  Source Engine
-  osppsvc #Office Software Protection Platform
-  MMCSS #Planificateur de classes multimédias
-  sppsvc #Protection logicielle
-  LanmanServer #Serveur 
-  PcaSvc #Service de l’Assistant Compatibilité des programmes
+  "nlasvc", #Connaissance des emplacements réseau
+  "RasAuto", #Gestionnaire de connexion automatique d’accès distant
+  "RasMan", #Gestionnaire de connexions d’accès distant 
+  "Winmgmt", #Infrastructure de gestion Windows
+  "ose", #Office  Source Engine
+  "osppsvc", #Office Software Protection Platform
+  "MMCSS", #Planificateur de classes multimédias
+  "sppsvc", #Protection logicielle
+  "LanmanServer", #Serveur 
+  "PcaSvc" #Service de l’Assistant Compatibilité des programmes
 }
 foreach($item in $service_stop){
     $counter++
