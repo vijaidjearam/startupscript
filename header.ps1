@@ -7,7 +7,7 @@ write-host "Internal chocolatey configured --------------Ok"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 | Out-Null
 write-host "chocolatey by default has been configured to priority 2 --------------Ok"
 #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
-chocolatey_apps
+#chocolatey_apps
 windows_service
 windows_settings
 function chocolatey_apps{
