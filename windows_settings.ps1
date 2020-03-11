@@ -3,9 +3,7 @@ write-host "Entering Windows-settings Configuration Stage"
 Set-TaskbarOptions -Size Small
 Enable-RemoteDesktop
 set-ntpserver_urca
-
-
-
+open_ports
 
 function Enable-RemoteDesktop {
 <#
@@ -306,6 +304,15 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "(Default)" -Value "25" -PropertyType "string"
 
 }
+function open_ports {
+# open wmi ports
+Enable-NetFirewallRule -Name "WMI-WINMGMT-In-TCP"
+# open Ps exec port
+netsh advfirewall firewall add rule name="psexec Port 445" dir=in action=allow protocol=TCP localport=445
+# Allow ping IPV4
+netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4 dir=in action=allow
+}
+
 
 
 
