@@ -1,0 +1,9 @@
+$service_stop = @{
+  AdobeFlashPlayerUpdateSvc
+  AdobeARMservice
+  gupdate
+  Wsearch
+  WMPNetworkSvc
+}
+
+
