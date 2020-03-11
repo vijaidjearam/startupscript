@@ -1,31 +1,31 @@
-$service_stop = @{
+$service_stop = @(
   "AdobeFlashPlayerUpdateSvc",
-  "AdobeARMservice",
-  "gupdate",
+  "AdobeARMs,ervice",
+  "gupdate"
   "Wsearch",
   "WMPNetworkSvc"
-}
-$service_startup_disabled = @{
+)
+$service_startup_disabled = @(
   "AdobeFlashPlayerUpdateSvc",
   "AdobeARMservice",
   "gupdate",
   "Wsearch",
   "WMPNetworkSvc",
   "SCardSvr",
-  "DiagTrack", 
+  "DiagTrack",
   "SharedAccess", 
   "WbioSrvc", 
-  "BDESVC", 
-  "Wlansvc",
+  "BDESVC",
+  "Wlansvc,"
   "Wwansvc", 
   "ehSched", 
   "bthserv",
-  "ehRecvr", 
+  "ehRecvr",
   "Mcx2Svc", 
   "SCPolicySvc",
-  "Themes" 
-}
-$service_startup_delayed-auto = @{
+  "Themes"
+)
+$service_startup_delayed_auto = @(
   "nlasvc", #Connaissance des emplacements réseau
   "RasAuto", #Gestionnaire de connexion automatique d’accès distant
   "RasMan", #Gestionnaire de connexions d’accès distant 
@@ -36,46 +36,46 @@ $service_startup_delayed-auto = @{
   "sppsvc", #Protection logicielle
   "LanmanServer", #Serveur 
   "PcaSvc" #Service de l’Assistant Compatibilité des programmes
-}
+)
+$counter = 1
 foreach($item in $service_stop){
-    $counter++
     Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_stop.count) * 100)
     Start-Sleep -Milliseconds 200
-    try{
-    $detail = get-service -Name $item | Out-Null
-    stop-service -Name $item | Out-Null
+    if(Get-Service $item -ErrorAction SilentlyContinue){
+    $detail = get-service -Name $item 
+    stop-service -Name $item
     write-Host "Stopped service-"$detail.displayname"-"$item"----------ok" -ForeGroundColor Green
     }
-    catch{
-    write-Host "Error stopping service-"$item"----------Nok" -ForeGroundColor RED
+    else{
+    write-Host "Error stopping service-"$item"----------Nok" -ForeGroundColor Yellow
     }
+    $counter++
 }
-$counter =0
+$counter =1
 foreach($item in $service_startup_disabled){
-    $counter++
-    Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_startup_disabled.count) * 100)
+    Write-Progress -Activity 'Setting service startup disabled ' -CurrentOperation $item -PercentComplete (($counter / $service_startup_disabled.count) * 100)
     Start-Sleep -Milliseconds 200
-    try{
-    $detail = get-service -Name $item | Out-Null
-    set-service -Name $item -startuptype disabled | Out-Null
-    write-Host $detail.displayname"-"$item"-Service starup set to Disabled" -ForeGroundColor Green
+    if(Get-Service $item -ErrorAction SilentlyContinue){
+    $detail = get-service -Name $item
+    set-service -Name $item -startuptype disabled 
+    write-Host $detail.displayname"-"$item"-Service starup set to Disabled----------ok" -ForeGroundColor Green
     }
-    catch{
-    write-Host $item"-Service unable to set startup Disabled" -ForeGroundColor Red
+    Else{
+    write-Host $item"-Service unable to set startup Disabled----------Nok" -ForeGroundColor Yellow
     }
-}
-$counter =0
-foreach($item in $service_startup_delayed-auto){
     $counter++
-    Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_startup_delayed-auto.count) * 100)
-    Start-Sleep -Milliseconds 200
-    try{
-    $detail = get-service -Name $item | Out-Null
-    set-service -Name $item -startuptype disabled | Out-Null
-    write-Host $detail.displayname"-"$item"-Service starup set to Delayed-auto" -ForeGroundColor Green
-    }
-    catch{
-    write-Host $item"-Service unable to set startup Delayed-auto" -ForeGroundColor Red
-    }
 }
-  
+$counter =1
+foreach($item in $service_startup_delayed_auto){
+    Write-Progress -Activity 'Setting service startup delayed auto' -CurrentOperation $item -PercentComplete (($counter / $service_startup_delayed_auto.count) * 100)
+    Start-Sleep -Milliseconds 200
+    if(Get-Service $item -ErrorAction SilentlyContinue){
+    $detail = get-service -Name $item 
+    set-service -Name $item -startuptype disabled
+    write-Host $detail.displayname"-"$item"-Service starup set to Delayed-auto----------ok" -ForeGroundColor Green
+    }
+    else{
+    write-Host $item"-Service unable to set startup Delayed-auto----------Nok" -ForeGroundColor Yellow
+    }
+    $counter++
+}
