@@ -305,17 +305,17 @@ function Restart-Explorer {
 }
 
 function set-ntpserver_urca {
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "25" -Value "ntp-ts.univ-reims.fr" -PropertyType "string"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "(Default)" -Value "25"
+	New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "25" -Value "ntp-ts.univ-reims.fr" -PropertyType "string"
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers" -Name "(Default)" -Value "25"
 }
 
 function open_ports {
-# open wmi ports
-Enable-NetFirewallRule -Name "WMI-WINMGMT-In-TCP"
-# open Ps exec port
-netsh advfirewall firewall add rule name="psexec Port 445" dir=in action=allow protocol=TCP localport=445
-# Allow ping IPV4
-netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4 dir=in action=allow
+	# open wmi ports
+	Enable-NetFirewallRule -Name "WMI-WINMGMT-In-TCP"
+	# open Ps exec port
+	netsh advfirewall firewall add rule name="psexec Port 445" dir=in action=allow protocol=TCP localport=445
+	# Allow ping IPV4
+	netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4 dir=in action=allow
 }
 
 function Set-WindowsExplorerOptions {
@@ -473,18 +473,18 @@ https://boxstarter.org
     if($showProtectedOSFiles) { Set-WindowsExplorerOptions -EnableShowProtectedOSFiles }
 }
 function AllowInsecureGuestAuth{
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "AllowInsecureGuestAuth" -Value 1
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "AllowInsecureGuestAuth" -Value 1
 }
 function power_config{
-powercfg.exe -x -monitor-timeout-ac 30 # plugged in device
-powercfg.exe -x -monitor-timeout-dc 30 # Battery device
-powercfg.exe -x -disk-timeout-ac 0 # plugged in device
-powercfg.exe -x -disk-timeout-dc 0 # Battery device
-powercfg.exe -x -standby-timeout-ac 0 # plugged in device
-powercfg.exe -x -standby-timeout-dc 0 # Battery device
-powercfg.exe -x -hibernate-timeout-ac 0 # plugged in device
-powercfg.exe -x -hibernate-timeout-dc 0 # Battery device
-powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on plugged in device
-powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on battery device
-powercfg.exe -h off
+	powercfg.exe -x -monitor-timeout-ac 30 # plugged in device
+	#powercfg.exe -x -monitor-timeout-dc 30 # Battery device
+	powercfg.exe -x -disk-timeout-ac 0 # plugged in device
+	#powercfg.exe -x -disk-timeout-dc 0 # Battery device
+	#powercfg.exe -x -standby-timeout-ac 0 # plugged in device
+	powercfg.exe -x -standby-timeout-dc 0 # Battery device
+	#powercfg.exe -x -hibernate-timeout-ac 0 # plugged in device
+	#powercfg.exe -x -hibernate-timeout-dc 0 # Battery device
+	powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on plugged in device
+	#powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on battery device
+	powercfg.exe -h off
 }
