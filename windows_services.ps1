@@ -42,8 +42,8 @@ foreach($item in $service_stop){
     Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_stop.count) * 100)
     Start-Sleep -Milliseconds 200
     try{
-    $detail = get-service -Name $item
-    stop-service -Name $item
+    $detail = get-service -Name $item | Out-Null
+    stop-service -Name $item | Out-Null
     write-Host "Stopped service-"$detail.displayname"-"$item"----------ok" -ForeGroundColor Green
     }
     catch{
@@ -56,8 +56,8 @@ foreach($item in $service_startup_disabled){
     Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_startup_disabled.count) * 100)
     Start-Sleep -Milliseconds 200
     try{
-    $detail = get-service -Name $item
-    set-service -Name $item -startuptype disabled
+    $detail = get-service -Name $item | Out-Null
+    set-service -Name $item -startuptype disabled | Out-Null
     write-Host $detail.displayname"-"$item"-Service starup set to Disabled" -ForeGroundColor Green
     }
     catch{
@@ -70,8 +70,8 @@ foreach($item in $service_startup_delayed-auto){
     Write-Progress -Activity 'Stopping Srevices' -CurrentOperation $item -PercentComplete (($counter / $service_startup_delayed-auto.count) * 100)
     Start-Sleep -Milliseconds 200
     try{
-    $detail = get-service -Name $item
-    set-service -Name $item -startuptype disabled
+    $detail = get-service -Name $item | Out-Null
+    set-service -Name $item -startuptype disabled | Out-Null
     write-Host $detail.displayname"-"$item"-Service starup set to Delayed-auto" -ForeGroundColor Green
     }
     catch{
