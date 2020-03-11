@@ -480,9 +480,9 @@ function power_config{
 	#powercfg.exe -x -monitor-timeout-dc 30 # Battery device
 	powercfg.exe -x -disk-timeout-ac 0 # plugged in device
 	#powercfg.exe -x -disk-timeout-dc 0 # Battery device
-	#powercfg.exe -x -standby-timeout-ac 0 # plugged in device
-	powercfg.exe -x -standby-timeout-dc 0 # Battery device
-	#powercfg.exe -x -hibernate-timeout-ac 0 # plugged in device
+	powercfg.exe -x -standby-timeout-ac 0 # plugged in device
+	#powercfg.exe -x -standby-timeout-dc 0 # Battery device
+	powercfg.exe -x -hibernate-timeout-ac 0 # plugged in device
 	#powercfg.exe -x -hibernate-timeout-dc 0 # Battery device
 	powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on plugged in device
 	#powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on battery device
