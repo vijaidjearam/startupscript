@@ -16,14 +16,14 @@ catch{write-host "Error Occured in Stage 1 Installing chocolatey Package--------
 #Stage 2 - Configuring Windows Services------------------------------------------------------------------------------------------------
 write-host "Entering - Stage 2 : Configuring Windows Services --------------Ok"
 try{
-iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_packages.ps1")) | Out-Null
+iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_services.ps1")) | Out-Null
 write-host "End Of Stage 2 - Configured Windows Services --------------Ok"
 }
 catch{write-host "Error Occured in Stage 2 Configuring Windows Services--------------NOK"-ForeGroundColor Red}
 #Stage 3 - Configuring Windows Settings --------------------------------------------------------------------------------------------------
 write-host "Entering - Stage 3 : Configuring Windows Settings --------------Ok"
 try{
-iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_packages.ps1")) | Out-Null
+iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1")) | Out-Null
 write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
 }
 catch{write-host "Error Occured in Stage 3 :Configuring Windows Settings--------------NOK"-ForeGroundColor Red}
