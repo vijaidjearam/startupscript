@@ -1,6 +1,6 @@
 $chocoapps = @(
     	"7zip.install",
-        "dotnetfx"
+        "dotnetfx",
     	"adobeshockwaveplayer",
     	"ccleaner",
     	"dellcommandupdate", 
