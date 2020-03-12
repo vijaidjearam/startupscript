@@ -521,4 +521,8 @@ New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\A
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU -Name RescheduleWaitTimeEnabled -Value 0 -Force
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU -Name UseWUServer -Value 1 -Force
 }
+function set-desktop-icon-small{
+Set-ItemProperty -path HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop -name IconSize -value 36
+Stop-Process -name explorer  # explorer.exe restarts automatically after stopping
+}
 
