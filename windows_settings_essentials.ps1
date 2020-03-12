@@ -500,7 +500,7 @@ function power_config{
 	powercfg.exe -h off
 }
 
-function set-wsus{
+function Set-Wsus{
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate -Name AcceptTrustedPublisherCerts -Value 1 -Force
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate -Name DisableWindowsUpdateAccess -Value 1 -Force
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate -Name ElevateNonAdmins -Value 0 -Force
