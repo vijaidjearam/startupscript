@@ -31,7 +31,7 @@ iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercon
 write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
 }
 $counter = 1
-foreach($item in $chocoapps){
+foreach($item in $stages){
     write-host "stage - "$counter
     $item
     write-host "End of stage -"$counter
