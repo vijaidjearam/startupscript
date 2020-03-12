@@ -9,7 +9,7 @@ $setting = @(
 "Show-HiddenFile",
 "Show-FileExtensions",
 'Disable-ComputerRestore -Drive "c:\"',
-"set-wsus",
+"Set-Wsus",
 "AllowInsecureGuestAuth" #Allow guest access to SAMBA share.
 )
 
