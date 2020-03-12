@@ -1,3 +1,26 @@
+function Show-HiddenFile
+{
+    param([Switch]$Off)
+    
+    $value = -not $Off.IsPresent
+    Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced `
+    -Name Hidden -Value $value -type DWORD
+
+    $shell = New-Object -ComObject Shell.Application
+    $shell.Windows() |
+        Where-Object { $_.document.url -eq $null } |
+        ForEach-Object { $_.Refresh() }
+} 
+function Show-FileExtensions
+{
+    # http://superuser.com/questions/666891/script-to-set-hide-file-extensions
+    Push-Location
+    Set-Location HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    Set-ItemProperty . HideFileExt "0"
+    Pop-Location
+    Stop-Process -processName: Explorer -force # This will restart the Explorer service to make this work.
+}
+
 function Enable-RemoteDesktop {
 <#
 .SYNOPSIS
