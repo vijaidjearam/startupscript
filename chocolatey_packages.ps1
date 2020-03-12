@@ -32,11 +32,11 @@ foreach($item in $chocoapps){
     Write-Progress -Activity 'Install Apps' -CurrentOperation $item -PercentComplete (($counter / $chocoapps.count) * 100)
     Start-Sleep -Milliseconds 200
     cinst -s chocosia -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host $item"--------"Ok}
+    if($LASTEXITCODE -eq 0){write-host $item"--------Ok" -ForegroundColor Green}
     else{write-host $item"--failed installing with internal server----------Nok" -ForegroundColor Red
     write-host "Trying to install with Chocolatey sever" -ForeGroundColor Yellow
     cinst -s chocolatey -y --ignore-checksums $item | Out-Null
-    if($LASTEXITCODE -eq 0){write-host $item"--------"Ok}
+    if($LASTEXITCODE -eq 0){write-host $item"--------Ok" -ForegroundColor Green}
     else{write-host $item"-failed installing even with chocolatey server-----------Nok" -ForegroundColor Red}
     }
 }
