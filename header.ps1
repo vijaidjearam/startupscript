@@ -31,3 +31,4 @@ iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercon
 write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
 }
 $stages | ForEach { Invoke-Expression $_ }
+Pause
