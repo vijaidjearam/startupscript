@@ -3,6 +3,7 @@ iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercon
 write-host "Entering Windows-settings Configuration Stage" 
 $setting = @(
 "Set-TaskbarOptions -Size Small",
+"set-desktop-icon-small",
 "Enable-RemoteDesktop",
 "set-ntpserver_urca",
 "open_ports",
