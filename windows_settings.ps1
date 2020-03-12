@@ -8,6 +8,8 @@ $setting = @(
 "open_ports",
 "Show-HiddenFile",
 "Show-FileExtensions",
+'Disable-ComputerRestore -Drive "c:\"',
+"set-wsus",
 "AllowInsecureGuestAuth" #Allow guest access to SAMBA share.
 )
 
