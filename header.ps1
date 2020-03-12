@@ -10,8 +10,8 @@ choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 |
 write-host "chocolatey by default has been configured to priority 2 --------------Ok"
 #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
 $stages =@( 
-#"chocolatey_apps",
-#"windows_service",
+"chocolatey_apps",
+"windows_service",
 "windows_settings"
 )
 function chocolatey_apps{
