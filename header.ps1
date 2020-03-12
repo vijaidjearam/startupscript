@@ -30,10 +30,4 @@ write-host "Entering - Stage 3 : Configuring Windows Settings --------------Ok"
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1")) | Out-Null
 write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
 }
-$counter = 1
-foreach($item in $stages){
-    write-host "stage - "$counter
-    $item
-    write-host "End of stage -"$counter
-    $counter++    
-}
+$stages | ForEach { Invoke-Expression $_ }
