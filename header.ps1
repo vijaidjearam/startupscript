@@ -11,13 +11,10 @@ chocolatey_apps
 windows_service
 windows_settings
 function chocolatey_apps{
-try{
   #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
   write-host "Entering - Stage 1 : Installing chocolatey Package --------------Ok"
   iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_packages.ps1")) | Out-Null
   write-host "End Of Stage 1 -Installed chocolatey Package --------------Ok"
-}
-catch{write-host "Error Occured in Stage 1 Installing chocolatey Package--------------NOK"-ForeGroundColor Red}
 }
 function windows_service{
 #Stage 2 - Configuring Windows Services------------------------------------------------------------------------------------------------
