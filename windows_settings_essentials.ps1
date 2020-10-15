@@ -501,6 +501,9 @@ function power_config{
 }
 
 function Set-Wsus{
+if(!(Test-Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate)){
+New-Item -Path HKLM:\Software\Policies\Microsoft\Windows -Name WindowsUpdate
+}
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate -Name AcceptTrustedPublisherCerts -Value 1 -Force
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate -Name DisableWindowsUpdateAccess -Value 1 -Force
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate -Name ElevateNonAdmins -Value 0 -Force
