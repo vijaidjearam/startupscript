@@ -35,7 +35,7 @@ write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
 function cleaning{
 #Stage 3 - Cleaning files --------------------------------------------------------------------------------------------------
 write-host "Entering - Stage 4 : Cleaning files created during install --------------Ok"
-iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1")) | Out-Null
+iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/cleaning.ps1")) | Out-Null
 write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
 }
 $stages | ForEach { Invoke-Expression $_ }
