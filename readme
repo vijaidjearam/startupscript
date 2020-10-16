@@ -1,3 +1,16 @@
+download windows media creation tool and create you usb.
+copy provisioning-win-edu or provisioning-win-pro and autounattend.xml to the root of the usb.
+launch the provisioning-win-edu or provisioning-win-pro according to your needs.
+wait for the process to complete.
+If everything goes right with out error your usb would be good to go...
+
+
+
+
+
+
+snippet : -------------------------------------------------------------------------------------------------------
+source index 4 is windows 10 education 
 dism /Get-WimInfo /WimFile:F:\Sources\install.esd
 dism /Export-Image /SourceImageFile:F:\Sources\install.esd /SourceIndex:4 /DestinationImageFile:C:\Users\username\Desktop\install.wim /Compress:Max /CheckIntegrity
 dism /Export-Image /SourceImageFile:.\install.esd /SourceIndex:4 /DestinationImageFile:.\install.wim /Compress:Max /CheckIntegrity
@@ -5,7 +18,3 @@ DISM /Mount-Wim /WimFile:"install.wim" /index:1 /MountDir:"c:\temp"
 copy setupcomplete.cmd to \Windows\Setup\Scripts\SetupComplete.cmd
 DISM /unmount-wim /MountDir:"c:\temp" /commit
 
-<-------------------------content of setupcomplete.cmd ------------------------------------------->
-<------ note: Tried to add the same command in auto unattend.xml but since the command executes before user login, there are few desktop customisation which fails--------->
-SetupComplete.cmd
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -v !test /t REG_SZ -d "cmd /k @powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \" iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))\"" /f
