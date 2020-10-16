@@ -4,6 +4,8 @@ Start-Transcript -path $FileName -NoClobber
 write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
 write-host "Chocolatey Installed Successfully --------------Ok"
+Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "10.57.8.46`tchoco.iut-troyes.univ-reims.fr" -Force
+write-host "adding chocolatey internal server address to host file --------------Ok"
 choco source add -n chocosia -s "http://choco.iut-troyes.univ-reims.fr/chocolatey" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------Ok"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 | Out-Null
