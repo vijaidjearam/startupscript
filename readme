@@ -1,4 +1,4 @@
-download windows media creation tool and create you usb.
+download windows media creation tool and create you usb. (make sure you download 64 bit image)
 copy provisioning-win-edu or provisioning-win-pro and autounattend.xml to the root of the usb.
 launch the provisioning-win-edu or provisioning-win-pro according to your needs.
 wait for the process to complete.
