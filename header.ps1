@@ -11,11 +11,19 @@ write-host "Internal chocolatey configured --------------Ok"
 choco source add -n chocolatey -s "https://chocolatey.org/api/v2" --priority=2 | Out-Null
 write-host "chocolatey by default has been configured to priority 2 --------------Ok"
 #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
-$stages =@( 
+$stages =@(
+"network",
 "chocolatey_apps",
 "windows_service",
-"windows_settings"
+"windows_settings",
+"cleaning"
 )
+function network{
+  #Stage 1 - Configuring Network Parameters-------------------------------------------------------------------------------------------------
+  write-host "Entering - Stage 1 : Configuring Network Parameters --------------Ok"
+  iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/network.ps1")) | Out-Null
+  write-host "End Of Stage 1 -Configured Network Parameters --------------Ok"
+}
 function chocolatey_apps{
   #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
   write-host "Entering - Stage 1 : Installing chocolatey Package --------------Ok"
@@ -38,7 +46,7 @@ function cleaning{
 #Stage 3 - Cleaning files --------------------------------------------------------------------------------------------------
 write-host "Entering - Stage 4 : Cleaning files created during install --------------Ok"
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/cleaning.ps1")) | Out-Null
-write-host "End Of Stage 3 - Configured Windows Settings --------------Ok"
+write-host "End Of Stage 3 - Cleaning files completed --------------Ok"
 }
 $stages | ForEach { Invoke-Expression $_ }
 Stop-Transcript
