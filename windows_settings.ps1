@@ -12,13 +12,13 @@ $setting = @(
 "Set-WindowsExplorerOptions -DisableShowFrequentFoldersInQuickAccess",
 "Set-WindowsExplorerOptions -EnableSnapAssist",
 "AllowInsecureGuestAuth" #Allow guest access to SAMBA share.
+"power_config",
 "Set-TaskbarOptions -Lock -NoAutoHide -Size Small",
 "set-desktop-icon-small",
 "Enable-RemoteDesktop",
 "open_ports",
 'Disable-ComputerRestore -Drive "c:\"',
-"Set-Wsus",
-
+"Set-Wsus"
 )
 
 $setting | foreach {
