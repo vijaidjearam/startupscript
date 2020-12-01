@@ -22,6 +22,8 @@ function network{
   write-host "Entering - Stage 1 : Configuring Network Parameters --------------Ok"
   iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/network.ps1")) | Out-Null
   write-host "End Of Stage 1 -Configured Network Parameters --------------Ok"
+   write-host "Waiting For 30 seconds for the network card to restart --------------Ok"
+  start-sleep -Seconds 30
 }
 function chocolatey_apps{
   #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
