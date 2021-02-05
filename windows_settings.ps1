@@ -26,14 +26,14 @@ $setting = @(
 #Mettre l’@IP du serveur WSUS sur le poste, et DESACTIVER TOUTES LES MISES A JOUR AUTOMATIQUES
 "Set-Wsus"
 #Dans les tâches planifiées, il y a des tâches qui ne servent à rien : HP Support Assistant, par exemple, vu que nous le lancerons manuellement, ainsi que la tâche de défragmentation, mises à jour Google, ou encore l’OfficeTelemetryAgent (mouchard d’Office). Donc effacer/désactiver celles qui ne servent à rien 
-Get-ScheduledTask -TaskName "*google*" | Disable-ScheduledTask
-Get-ScheduledTask -TaskName "*MicrosoftEdgeupdate*" | Disable-ScheduledTask
-Get-ScheduledTask -TaskName "*Nvidia*" | Disable-ScheduledTask
-Get-ScheduledTask -TaskName "*Ccleaner*" | Disable-ScheduledTask
-Get-ScheduledTask -TaskName "*OfficeTelemetryAgent*" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"*google*\" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"*MicrosoftEdgeupdate*\" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"*Nvidia*\" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"*Ccleaner*\" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"*OfficeTelemetryAgent*\" | Disable-ScheduledTask
 Get-ScheduledTask -TaskPath "\Microsoft\Windows\Customer Experience Improvement Program\" | Disable-ScheduledTask
-Get-ScheduledTask -TaskName "Microsoft Compatibility Appraiser" | Disable-ScheduledTask
-Get-ScheduledTask -TaskName "ProgramDataUpdater" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"Microsoft Compatibility Appraiser\" | Disable-ScheduledTask
+Get-ScheduledTask -TaskName \"ProgramDataUpdater\" | Disable-ScheduledTask
 Get-ScheduledTask -TaskPath "\Microsoft\Windows\DiskDiagnostic\" | Disable-ScheduledTask
 Get-ScheduledTask -TaskPath "\Microsoft\Windows\WindowsUpdate\" | Disable-ScheduledTask
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
