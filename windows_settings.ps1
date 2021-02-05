@@ -25,6 +25,17 @@ $setting = @(
 'Disable-ComputerRestore -Drive "c:\"',
 #Mettre l’@IP du serveur WSUS sur le poste, et DESACTIVER TOUTES LES MISES A JOUR AUTOMATIQUES
 "Set-Wsus"
+)
+
+$setting | foreach {
+try{
+Invoke-Expression $_ |Out-Null
+write-host $_ "---------------------OK" -ForegroundColor Green
+}
+catch{
+write-host  ""
+write-host $_ "--------------Nok" -ForegroundColor Red
+}
 #Dans les tâches planifiées, il y a des tâches qui ne servent à rien : HP Support Assistant, par exemple, vu que nous le lancerons manuellement, ainsi que la tâche de défragmentation, mises à jour Google, ou encore l’OfficeTelemetryAgent (mouchard d’Office). Donc effacer/désactiver celles qui ne servent à rien 
 Get-ScheduledTask -TaskName \"*google*\" | Disable-ScheduledTask
 Get-ScheduledTask -TaskName \"*MicrosoftEdgeupdate*\" | Disable-ScheduledTask
@@ -41,15 +52,4 @@ Get-ScheduledTask -TaskName "Scheduled Start"| Disable-ScheduledTask
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects -Name VisualFXSetting -Value 3
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name UserPreferencesMask -Value "90 12 03 80 10 00 00 00"
-)
-
-$setting | foreach {
-try{
-Invoke-Expression $_ |Out-Null
-write-host $_ "---------------------OK" -ForegroundColor Green
-}
-catch{
-write-host  ""
-write-host $_ "--------------Nok" -ForegroundColor Red
-}
 }
