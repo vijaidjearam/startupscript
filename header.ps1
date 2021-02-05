@@ -13,7 +13,7 @@ write-host "chocolatey by default has been removed --------------Ok"
 $stages =@(
 #"network",
 #"chocolatey_apps",
-"windows_service",
+#"windows_service",
 "windows_settings",
 "cleaning"
 )
