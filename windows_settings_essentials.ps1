@@ -522,11 +522,11 @@ $temp =@(
 $temp | foreach {
 Invoke-Expression $_ |Out-Null
 if($?){
-write-host $_ "--------------Nok" -ForegroundColor Red
+write-host $_ "--------------Nok" -ForegroundColor Green
 
 }
 else{
-write-host $_ "---------------------OK" -ForegroundColor Green
+write-host $_ "---------------------OK" -ForegroundColor Red
 }
 }
 }
