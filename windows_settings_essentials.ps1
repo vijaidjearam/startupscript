@@ -501,13 +501,10 @@ New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\A
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU -Name RescheduleWaitTimeEnabled -Value 0 -Force
 New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU -Name UseWUServer -Value 1 -Force
 }
-function set-desktop-icon-small{
-Set-ItemProperty -path HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop -name IconSize -value 36
-Stop-Process -name explorer  # explorer.exe restarts automatically after stopping
-}
+
 #Dans les tâches planifiées, il y a des tâches qui ne servent à rien : HP Support Assistant, par exemple, vu que nous le lancerons manuellement, ainsi que la tâche de défragmentation, mises à jour Google, ou encore l’OfficeTelemetryAgent (mouchard d’Office). Donc effacer/désactiver celles qui ne servent à rien 
 function disable-scheduledtasks{
-$setting =@(
+$temp =@(
 'Get-ScheduledTask -TaskName "*google*" | Disable-ScheduledTask',
 'Get-ScheduledTask -TaskName "*MicrosoftEdgeupdate*" | Disable-ScheduledTask',
 'Get-ScheduledTask -TaskName "*Nvidia*" | Disable-ScheduledTask',
@@ -522,7 +519,7 @@ $setting =@(
 'Get-ScheduledTask -TaskName "Scheduled Start"| Disable-ScheduledTask'
 )
 
-$setting | foreach {
+$temp | foreach {
 try{
 Invoke-Expression $_ |Out-Null
 if($?){
@@ -535,10 +532,14 @@ write-host $_ "---------------------OK" -ForegroundColor Green
 
 }
 }
+catch{}
 }
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
 function performance_options_visual_effects{
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects -Name VisualFXSetting -Value 3
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name UserPreferencesMask -Value "90 12 03 80 10 00 00 00"
 }
-
+function set-desktop-icon-small{
+Set-ItemProperty -path HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop -name IconSize -value 36
+Stop-Process -name explorer  # explorer.exe restarts automatically after stopping
+}
