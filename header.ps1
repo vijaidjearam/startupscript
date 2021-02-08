@@ -11,9 +11,9 @@ choco source remove -n chocolatey
 write-host "chocolatey by default has been removed --------------Ok"
 #Stage 1 - Installing chocolatey Apps-------------------------------------------------------------------------------------------------
 $stages =@(
-#"network",
-#"chocolatey_apps",
-#"windows_service",
+"network",
+"chocolatey_apps",
+"windows_service",
 "windows_settings",
 "cleaning"
 )
