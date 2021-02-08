@@ -520,7 +520,6 @@ $temp =@(
 )
 
 $temp | foreach {
-try{
 Invoke-Expression $_ |Out-Null
 if($?){
 write-host $_ "--------------Nok" -ForegroundColor Red
@@ -529,9 +528,6 @@ write-host $_ "--------------Nok" -ForegroundColor Red
 else{
 write-host $_ "---------------------OK" -ForegroundColor Green
 }
-
-}
-catch{}
 }
 }
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
