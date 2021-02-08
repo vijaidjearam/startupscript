@@ -504,30 +504,26 @@ New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\A
 
 #Dans les tâches planifiées, il y a des tâches qui ne servent à rien : HP Support Assistant, par exemple, vu que nous le lancerons manuellement, ainsi que la tâche de défragmentation, mises à jour Google, ou encore l’OfficeTelemetryAgent (mouchard d’Office). Donc effacer/désactiver celles qui ne servent à rien 
 function disable-scheduledtasks{
+write-host "Disabling Scheduled task-----------------------------------"
 $temp =@(
-'Get-ScheduledTask -TaskName "*google*" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "*MicrosoftEdgeupdate*" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "*Nvidia*" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "*Ccleaner*" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "*OfficeTelemetryAgent*" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName consolidator | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName UsbCeip | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "Microsoft Compatibility Appraiser" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "ProgramDataUpdater" | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName Microsoft-Windows-DiskDiagnosticDataCollector | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName Microsoft-Windows-DiskDiagnosticResolver | Disable-ScheduledTask',
-'Get-ScheduledTask -TaskName "Scheduled Start"| Disable-ScheduledTask'
+"*google*",
+"*MicrosoftEdgeupdate*",
+"*Nvidia*",
+"*Ccleaner*",
+"*OfficeTelemetryAgent*",
+"consolidator",
+"UsbCeip",
+"Microsoft Compatibility Appraiser",
+"ProgramDataUpdater",
+"Microsoft-Windows-DiskDiagnosticDataCollector",
+"Microsoft-Windows-DiskDiagnosticResolver",
+"Scheduled Start"
 )
 
 $temp | foreach {
-Invoke-Expression $_ |Out-Null
-if($?){
-write-host $_ "--------------Nok" -ForegroundColor Green
-
-}
-else{
-write-host $_ "---------------------OK" -ForegroundColor Red
-}
+Get-ScheduledTask -TaskName $_ | Disable-ScheduledTask | Out-Null
+if($?){write-host $_ "--------------ok" -ForegroundColor Green}
+else{write-host $_ "---------------------NOK" -ForegroundColor Red}
 }
 }
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
