@@ -1,5 +1,6 @@
 - download windows media creation tool and create you usb. (make sure you download 64 bit image)
 - copy provisioning-win-edu or provisioning-win-pro and autounattend.xml to the root of the usb.
+- the target Usb Drive must be in NTFS format (fat32 wont work while copying the install.wim because its file size is ~> 4.0GB) 
 - launch the provisioning-win-edu or provisioning-win-pro according to your needs.
 - wait for the process to complete.
 - If everything goes right with out error your usb would be good to go...
