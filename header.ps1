@@ -45,9 +45,9 @@ iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercon
 write-host "End Of Stage 4 - Configured Windows Settings --------------Ok"
 }
 function bios_config{
-write-host "Entering - Stage 5 : Configuring Windows Settings --------------Ok"
+write-host "Entering - Stage 5 : Configuring Bios Settings --------------Ok"
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1")) | Out-Null
-write-host "End Of Stage 5 - Configured Windows Settings --------------Ok"
+write-host "End Of Stage 5 - Configured Bios Settings --------------Ok"
 }
 function cleaning{
 #Stage 3 - Cleaning files --------------------------------------------------------------------------------------------------
