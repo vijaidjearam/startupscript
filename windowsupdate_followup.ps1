@@ -32,5 +32,6 @@ if (Get-WURebootStatus -silent){
 	Restart-Computer
 }
 else{
+#Mettre l’@IP du serveur WSUS sur le poste, et DESACTIVER TOUTES LES MISES A JOUR AUTOMATIQUES
 Set-Wsus
 }
