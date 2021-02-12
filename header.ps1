@@ -15,6 +15,7 @@ $stages =@(
 "chocolatey_apps",
 "windows_service",
 "windows_settings",
+"bios_config",
 "cleaning"
 )
 function network{
@@ -43,11 +44,16 @@ write-host "Entering - Stage 4 : Configuring Windows Settings --------------Ok"
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1")) | Out-Null
 write-host "End Of Stage 4 - Configured Windows Settings --------------Ok"
 }
+function bios_config{
+write-host "Entering - Stage 5 : Configuring Windows Settings --------------Ok"
+iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1")) | Out-Null
+write-host "End Of Stage 5 - Configured Windows Settings --------------Ok"
+}
 function cleaning{
 #Stage 3 - Cleaning files --------------------------------------------------------------------------------------------------
-write-host "Entering - Stage 5 : Cleaning files created during install --------------Ok"
+write-host "Entering - Stage 6 : Cleaning files created during install --------------Ok"
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/cleaning.ps1")) | Out-Null
-write-host "End Of Stage 5 - Cleaning files completed --------------Ok"
+write-host "End Of Stage 6 - Cleaning files completed --------------Ok"
 }
 $stages | ForEach { Invoke-Expression $_ }
 Stop-Transcript
