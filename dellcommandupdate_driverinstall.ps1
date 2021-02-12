@@ -51,6 +51,7 @@ try
 & "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall
 Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_applyupdates.ps1'))"
 Stop-Transcript
+Restart-Computer
 
 }
 catch
