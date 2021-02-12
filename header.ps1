@@ -57,4 +57,8 @@ write-host "End Of Stage 6 - Cleaning files completed --------------Ok"
 }
 $stages | ForEach { Invoke-Expression $_ }
 Stop-Transcript
+write-host "Entering - Stage 7 : Dell Command update  --------------Ok"
+iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_driverinstall.ps1")) | Out-Null
+
+
 Pause
