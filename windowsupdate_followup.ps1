@@ -70,14 +70,19 @@ function Set-RunOnce
     }
 }
 
+$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_windowsupdate_transcript.txt"
+Start-Transcript -path $FileName -NoClobber
+
 Import-Module -Name PSWindowsUpdate
 Install-WindowsUpdate -AcceptAll
 
 if (Get-WURebootStatus -silent){
 	Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_followup.ps1'))"
+	Stop-Transcript
 	Restart-Computer
 }
 else{
 #Mettre l’@IP du serveur WSUS sur le poste, et DESACTIVER TOUTES LES MISES A JOUR AUTOMATIQUES
 Set-Wsus
+Stop-Transcript
 }
