@@ -73,7 +73,6 @@ function Set-RunOnce
 }
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Install-Module -Name PSWindowsUpdate -Force
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 Import-Module -Name PSWindowsUpdate
 Install-WindowsUpdate -AcceptAll
 
