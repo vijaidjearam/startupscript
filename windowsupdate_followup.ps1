@@ -83,6 +83,7 @@ if (Get-WURebootStatus -silent){
 }
 else{
 #Mettre l’@IP du serveur WSUS sur le poste, et DESACTIVER TOUTES LES MISES A JOUR AUTOMATIQUES
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
 Set-Wsus
 Stop-Transcript
 }
