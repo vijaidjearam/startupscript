@@ -43,6 +43,7 @@ function Set-RunOnce
         Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
     }
 }
+$WarningPreference = 'SilentlyContinue'
 write-host " Installing Chocolatey"
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
 write-host "Chocolatey Installed Successfully --------------Ok"
