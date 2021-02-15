@@ -43,6 +43,7 @@ function Set-RunOnce
         Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
     }
 }
+$WarningPreference = 'SilentlyContinue'
 $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_dellcommandupdate_driverinstall_transcript.txt"
 Start-Transcript -path $FileName -NoClobber
 if (test-path "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe")
@@ -50,12 +51,13 @@ try
 {
 & "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates
 Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1'))"
+write-host "Dell command update -applyupdates-completed" -ForegroundColor Green
 Stop-Transcript
 Restart-Computer
 
 }
 catch
 {
-write-host "Dell command update failed" -ForegroundColor Red
+write-host "Dell command update -applyupdates-failed" -ForegroundColor Red
 Stop-Transcript
 }
