@@ -73,6 +73,7 @@ function Set-RunOnce
 }
 
 #---------------------Windows update script starts here--------------------------------------------------------
+$WarningPreference = 'SilentlyContinue'
 $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_windowsupdate_transcript.txt"
 Start-Transcript -path $FileName -NoClobber
 
@@ -83,11 +84,14 @@ Install-WindowsUpdate -AcceptAll -IgnoreReboot
 
 if (Get-WURebootStatus -silent){
 	Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_followup.ps1'))"
+	write-host "Windows update initiate process -Completed" -ForegroundColor Green
 	Stop-Transcript
 	Restart-Computer
 }
 else{
 #Mettre l’@IP du serveur WSUS sur le poste, et DESACTIVER TOUTES LES MISES A JOUR AUTOMATIQUES
 Set-Wsus
+write-host "Windows update initiate process -Completed - no Reboot required - so proceeding with further configuration" -ForegroundColor Green
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
 Stop-Transcript
 }
