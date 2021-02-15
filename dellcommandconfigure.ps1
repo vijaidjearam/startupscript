@@ -1,3 +1,4 @@
+$WarningPreference = 'SilentlyContinue'
 choco install dellcommandconfigure -y
 $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_dellcommandupdate_bios_config_transcript.txt"
 Start-Transcript -path $FileName -NoClobber
