@@ -49,7 +49,7 @@ if (test-path "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe")
 try
 {
 & "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates
-Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_initiate.ps1'))"
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1'))"
 Stop-Transcript
 Restart-Computer
 
