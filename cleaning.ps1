@@ -1,4 +1,5 @@
 if (test-path C:\Windows\Setup\Scripts\SetupComplete.cmd){Remove-Item 'C:\Windows\Setup\Scripts\SetupComplete.cmd'}
+Remove-Item -Path HKCU:\osinstall_local
 Write-host "Cleaning Event Log" 
 Try {Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }}
 catch {write-host "Error while cleaning log files" -ForegroundColor Red}
