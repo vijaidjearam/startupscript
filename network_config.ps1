@@ -1,4 +1,3 @@
-try{
 $ipaddr = ((Test-NetConnection).SourceAddress).IPAddress
 $interfaceindex = (get-NetIPAddress -IPAddress $ipaddr).ifIndex
 $DNS1 = "10.57.8.88"
@@ -13,7 +12,3 @@ write-host "Restarting Network Adapter" -ForegroundColor DarkGreen
 $adapter = Get-CimInstance -ClassName Win32_NetworkAdapter | where {$_.InterfaceIndex -eq $interfaceindex}
 Disable-NetAdapter -Name $adapter.NetConnectionID -Confirm:$false
 Enable-NetAdapter -Name $adapter.NetConnectionID -Confirm:$false
-}
-catch{
-Write-Error "Unable to connect to the internet- please check internet connection and try again"
-}
