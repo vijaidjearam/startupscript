@@ -44,22 +44,25 @@ function Set-RunOnce
     }
 }
 $WarningPreference = 'SilentlyContinue'
-$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_initial-stage_transcript.txt"
-Start-Transcript -path $FileName -NoClobber
-write-host " Installing Chocolatey" iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
-write-host "Chocolatey Installed Successfully --------------Ok"
-write-host "adding chocolatey internal server address to host file --------------Ok"
-choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
-write-host "Internal chocolatey configured --------------Ok"
+
 if (test-path 'HKCU:\osinstall_local'){
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
 }
 else{
+$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_initial-stage_transcript.txt"
+Start-Transcript -path $FileName -NoClobber
+write-host " Installing Chocolatey" 
+iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
+write-host "Chocolatey Installed Successfully --------------Ok"
+write-host "adding chocolatey internal server address to host file --------------Ok"
+choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
+write-host "Internal chocolatey configured --------------Ok"
 New-Item -Path "HKCU:\" -Name osinstall_local
 New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_driverinstall'
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
-}
 Stop-Transcript
+}
+
 Switch ($stage)
 {
     'dellcommandupdate_driverinstall'
