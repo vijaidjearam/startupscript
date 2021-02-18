@@ -1,3 +1,4 @@
+$ErrorActionPreference = Stop
 try
 {
 choco install dellcommandconfigure -y
