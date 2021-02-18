@@ -1,3 +1,5 @@
+Try
+{
 $service_stop = @(
   "AdobeFlashPlayerUpdateSvc",
   "AdobeARMs,ervice",
@@ -78,4 +80,17 @@ foreach($item in $service_startup_delayed_auto){
     write-Host $item"-Service unable to set startup Delayed-auto----------Nok" -ForeGroundColor Yellow
     }
     $counter++
+}
+write-host "Stage: windows_services completed" -ForegroundColor Green
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windows_settings'
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+Stop-Transcript
+Restart-Computer
+}
+catch
+{
+write-host "Stage: windows_services Failed" -ForegroundColor Red
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value windows_services
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+Stop-Transcript
 }
