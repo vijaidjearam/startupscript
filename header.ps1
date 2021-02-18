@@ -70,231 +70,72 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_driverinstall.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_applyupdates'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_driverinstall.ps1'))
     }
     'dellcommandupdate_applyupdates'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_applyupdates.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandconfigure'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_applyupdates.ps1'))
+ 
     }
     'dellcommandconfigure'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_initiate'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1'))
     }
     'windowsupdate_initiate'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
+
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_initiate.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_followup'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
-    }
+     }
     'windowsupdate_followup'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_followup.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            if (Get-WURebootStatus -silent){
-                write-host "Stage: $stage completed but requires a reboot , the system will reboot and check if there is any further windows update" -ForegroundColor Green
-                Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_followup'
-                }
-            else {Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'network_config'}
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_followup.ps1'))
     }
     'network_config'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/network_config.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_apps'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/network_config.ps1'))
     }
     'chocolatey_apps'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_apps.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windows_services'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_apps.ps1'))
     }
     'windows_services'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_services.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windows_settings'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_services.ps1'))
     }
     'windows_settings'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'cleaning'
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            Restart-Computer
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1'))
+   
     }
     'cleaning'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        try
-            {
-            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/cleaning.ps1'))
-            write-host "Stage: $stage completed" -ForegroundColor Green
-            Stop-Transcript
-
-            }
-        catch
-            {
-            write-host "Stage: $stage Failed" -ForegroundColor Red
-            Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value $stage
-            Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
-            Stop-Transcript
-            }
-        
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/cleaning.ps1'))
     }
 }
