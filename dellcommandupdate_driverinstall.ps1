@@ -1,4 +1,4 @@
-$ErrorActionPreference = Stop
+$ErrorActionPreference = 'Stop'
 try
 {
 choco install dellcommandupdate -y
