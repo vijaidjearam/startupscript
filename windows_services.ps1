@@ -1,3 +1,4 @@
+$ErrorActionPreference = Stop
 Try
 {
 $service_stop = @(
