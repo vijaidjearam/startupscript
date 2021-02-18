@@ -1,3 +1,5 @@
+Try
+{
 $chocoapps = @(
     	"7zip.install",
         "dotnetfx",
@@ -39,4 +41,17 @@ foreach($item in $chocoapps){
     if($LASTEXITCODE -eq 0){write-host $item"--------Ok" -ForegroundColor Green}
     else{write-host $item"-failed installing even with chocolatey server-----------Nok" -ForegroundColor Red}
     }
+}
+write-host "Stage: chocolatey_apps completed" -ForegroundColor Green
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windows_services'
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+Stop-Transcript
+Restart-Computer
+}
+catch
+{
+write-host "Stage: chocolatey_apps Failed" -ForegroundColor Red
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value chocolatey_apps
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+Stop-Transcript
 }
