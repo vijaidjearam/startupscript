@@ -1,8 +1,9 @@
 Try
 {
-write-host "Stage: windowsupdate_followup completed" -ForegroundColor Green
+
 Import-Module -Name PSWindowsUpdate
 Install-WindowsUpdate -AcceptAll -IgnoreReboot
+write-host "Stage: windowsupdate_followup completed" -ForegroundColor Green
 if (Get-WURebootStatus -silent){
 write-host "Stage: windowsupdate_followup completed but requires a reboot , the system will reboot and check if there is any further windows update" -ForegroundColor Green
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_followup'
