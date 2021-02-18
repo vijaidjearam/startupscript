@@ -1,6 +1,6 @@
 Try
 {
-write-host "Stage: network_config completed" -ForegroundColor Green
+
 $ipaddr = ((Test-NetConnection).SourceAddress).IPAddress
 $interfaceindex = (get-NetIPAddress -IPAddress $ipaddr).ifIndex
 $DNS1 = "10.57.8.88"
@@ -15,6 +15,7 @@ write-host "Restarting Network Adapter" -ForegroundColor DarkGreen
 $adapter = Get-CimInstance -ClassName Win32_NetworkAdapter | where {$_.InterfaceIndex -eq $interfaceindex}
 Disable-NetAdapter -Name $adapter.NetConnectionID -Confirm:$false
 Enable-NetAdapter -Name $adapter.NetConnectionID -Confirm:$false
+write-host "Stage: network_config completed" -ForegroundColor Green
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_apps'
 Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
 Stop-Transcript
