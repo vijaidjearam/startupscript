@@ -1,11 +1,11 @@
 try
 {
 if (test-path C:\Windows\Setup\Scripts\SetupComplete.cmd){Remove-Item 'C:\Windows\Setup\Scripts\SetupComplete.cmd'}
-Remove-Item -Path HKCU:\osinstall_local
 Write-host "Cleaning Event Log" 
 Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
 Write-host "Completed Cleaning Event Log" 
 write-host "Stage: cleaning completed" -ForegroundColor Green
+Remove-Item -Path HKCU:\osinstall_local
 Stop-Transcript
 }
 catch
