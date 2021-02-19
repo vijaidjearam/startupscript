@@ -25,7 +25,8 @@ $setting = @(
 "open_ports",
 #Désactiver la protection du système (points de restauration) : nous gagnons alors de l’espace disque. Nous avons une image qui fonctionne désormais, et il n’est pas nécessaire de conserver des points de restauration.
 'Disable-ComputerRestore -Drive "c:\"',
-
+#point windows wsus server to 10.1.1.1( its a dummy address so windows will get updates anymore)
+"Set-Wsus",
 #Dans les tâches planifiées, il y a des tâches qui ne servent à rien : HP Support Assistant, par exemple, vu que nous le lancerons manuellement, ainsi que la tâche de défragmentation, mises à jour Google, ou encore l’OfficeTelemetryAgent (mouchard d’Office). Donc effacer/désactiver celles qui ne servent à rien 
 "disable-scheduledtasks",
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
