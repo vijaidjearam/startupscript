@@ -110,6 +110,11 @@ elseif($LASTEXITCODE -eq 42){
 write-host "$item is not available or cannot be configured " -ForegroundColor Red
 
 }
+elseif($LASTEXITCODE -eq 43){
+
+write-host "There was an error setting the option: $item " -ForegroundColor Red
+
+}
 elseif($LASTEXITCODE -eq 72){
 
 write-host "TpmActivation cannot be modified when TPM is OFF" -ForegroundColor Red
