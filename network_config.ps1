@@ -27,4 +27,5 @@ write-host "Stage: network_config Failed" -ForegroundColor Red
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'network_config'
 Set-Runonce
 Stop-Transcript
+Pause
 }
