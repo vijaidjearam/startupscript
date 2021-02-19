@@ -34,7 +34,8 @@ function Set-RunOnce
 
         #Command to run
         [string]
-        $Command = "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+        #$Command = "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+        $Command = "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; $env:Temp\header.ps1"
   
     ) 
 function Test-RegistryValue {
@@ -91,6 +92,7 @@ write-host "Internal chocolatey configured --------------Ok"
 New-Item -Path "HKCU:\" -Name osinstall_local
 New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_driverinstall'
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
+((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1')) | Out-File $env:TEMP\header.ps1
 Stop-Transcript
 }
 
