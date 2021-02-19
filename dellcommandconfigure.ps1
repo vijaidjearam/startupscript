@@ -110,6 +110,11 @@ elseif($LASTEXITCODE -eq 42){
 write-host "$item is not available or cannot be configured " -ForegroundColor Red
 
 }
+elseif($LASTEXITCODE -eq 72){
+
+write-host "TpmActivation cannot be modified when TPM is OFF" -ForegroundColor Red
+
+}
 elseif($LASTEXITCODE -eq 58 -or $LASTEXITCODE -eq 65 -or $LASTEXITCODE -eq 66 -or $LASTEXITCODE -eq 67 -or $LASTEXITCODE -eq 109)
 {
 write-host "Password is set in the BIOS, please clear the BIOS password during restart and continue" -ForegroundColor Red
