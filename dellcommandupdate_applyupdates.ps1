@@ -6,6 +6,7 @@ write-host "Stage: dellcommandupdate_applyupdates completed" -ForegroundColor Gr
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandconfigure'
 Set-Runonce
 Stop-Transcript
+Pause
 Restart-Computer
 } 
 else 
