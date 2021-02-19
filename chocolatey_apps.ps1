@@ -54,4 +54,5 @@ write-host "Stage: chocolatey_apps Failed" -ForegroundColor Red
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value chocolatey_apps
 Set-Runonce
 Stop-Transcript
+Pause
 }
