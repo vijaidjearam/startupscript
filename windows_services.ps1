@@ -93,4 +93,5 @@ write-host "Stage: windows_services Failed" -ForegroundColor Red
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value windows_services
 Set-Runonce
 Stop-Transcript
+Pause
 }
