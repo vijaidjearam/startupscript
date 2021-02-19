@@ -65,7 +65,8 @@ return $false
     }
     else
     {
-       New-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
+       New-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command
+       write-host "$Command set to registry runonce" -ForegroundColor Green
     }
 }
 $WarningPreference = 'SilentlyContinue'
