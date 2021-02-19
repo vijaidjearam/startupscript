@@ -1,6 +1,6 @@
 & "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates
 
-if($LASTEXITCODE -eq 0)
+if($LASTEXITCODE -eq 0 -or $LASTEXITCODE -eq 1 -or $LASTEXITCODE -eq 5)
 {
 write-host "Stage: dellcommandupdate_applyupdates completed" -ForegroundColor Green
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandconfigure'
