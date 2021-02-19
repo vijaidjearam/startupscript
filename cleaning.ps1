@@ -1,4 +1,3 @@
-$ErrorActionPreference = Stop
 try
 {
 if (test-path C:\Windows\Setup\Scripts\SetupComplete.cmd){Remove-Item 'C:\Windows\Setup\Scripts\SetupComplete.cmd'}
