@@ -1,5 +1,4 @@
 $WarningPreference = 'SilentlyContinue'
-$ErrorActionPreference = Stop
 try
 {
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
