@@ -8,6 +8,14 @@ Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.ex
 Stop-Transcript
 Restart-Computer
 }
+elseif($LASTEXITCODE -eq 58 -or $LASTEXITCODE -eq 65 -or $LASTEXITCODE -eq 66 -or $LASTEXITCODE -eq 67 -or $LASTEXITCODE -eq 109 )
+{
+write-host "Password is set in the BIOS, please clear the BIOS password during restart and continue" -ForegroundColor Red
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandconfigure'
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+Stop-Transcript
+Restart-Computer
+}
 else 
 {
 write-host "Stage: dellcomandconfigure Failed" -ForegroundColor Red
