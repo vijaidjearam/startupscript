@@ -20,5 +20,6 @@ write-host "Stage: windowsupdate_followup Failed" -ForegroundColor Red
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value windowsupdate_followup
 Set-Runonce
 Stop-Transcript
+Pause
 }
 
