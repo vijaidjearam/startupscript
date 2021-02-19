@@ -32,15 +32,40 @@ function Set-RunOnce
         $Command = '%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -file c:\Scripts\run1.ps1'
   
     ) 
+function Test-RegistryValue {
+
+param (
+
+ [parameter(Mandatory=$true)]
+ [ValidateNotNullOrEmpty()]$Path,
+
+[parameter(Mandatory=$true)]
+ [ValidateNotNullOrEmpty()]$Value
+)
+
+try {
+
+Get-ItemProperty -Path $Path | Select-Object -ExpandProperty $Value -ErrorAction Stop | Out-Null
+ return $true
+ }
+
+catch {
+
+return $false
+
+}
+
+}
 
     
-    if ((Get-Item -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce).$KeyName)
+    if (Test-RegistryValue -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Value $keyname)
     {
-        New-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
+         Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command 
+        
     }
     else
     {
-        Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command 
+       New-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -PropertyType ExpandString
     }
 }
 $WarningPreference = 'SilentlyContinue'
