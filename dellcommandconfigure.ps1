@@ -1,3 +1,4 @@
+Pause
 $biossetting=@(
 "AcPwrRcvry=Off",
 "AdminSetupLockout=Disabled",
