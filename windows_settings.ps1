@@ -7,7 +7,7 @@ $setting = @(
 "set-ntpserver_urca",
 #Afficher l’extension des noms de fichiers dans l’explorateur. C’est important pour le développement
 "Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives",
-"Set-WindowsExplorerOptions -EnableShowProtectedOSFiles",
+#"Set-WindowsExplorerOptions -EnableShowProtectedOSFiles",
 "Set-WindowsExplorerOptions -EnableShowFileExtensions",
 "Set-WindowsExplorerOptions -EnableShowFullPathInTitleBar",
 "Set-WindowsExplorerOptions -DisableOpenFileExplorerToQuickAccess",
