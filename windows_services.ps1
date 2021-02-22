@@ -82,6 +82,7 @@ foreach($item in $service_startup_delayed_auto){
       else {
         Write-Host "Successfully changed $Service service to delayed start" -foregroundcolor green
    }
+   }
     $counter++
 }
 write-host "Stage: windows_services completed" -ForegroundColor Green
