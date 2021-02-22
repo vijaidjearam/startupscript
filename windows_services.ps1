@@ -72,13 +72,16 @@ foreach($item in $service_startup_delayed_auto){
     Write-Progress -Activity 'Setting service startup delayed auto' -CurrentOperation $item -PercentComplete (($counter / $service_startup_delayed_auto.count) * 100)
     Start-Sleep -Milliseconds 200
     if(Get-Service $item -ErrorAction SilentlyContinue){
-    $detail = get-service -Name $item 
-    set-service -Name $item -startuptype disabled
-    write-Host $detail.displayname"-"$item"-Service starup set to Delayed-auto----------ok" -ForeGroundColor Green
-    }
-    else{
-    write-Host $item"-Service unable to set startup Delayed-auto----------Nok" -ForeGroundColor Yellow
-    }
+      $service = $item
+      $command = "sc.exe config $Service start= delayed-auto"
+      $Output = Invoke-Expression -Command $Command
+      if($LASTEXITCODE -ne 0){
+          Write-Host "$Computer : Failed to set $Service to delayed start. 
+          More details: $Output" -foregroundcolor red
+      } 
+      else {
+        Write-Host "Successfully changed $Service service to delayed start" -foregroundcolor green
+   }
     $counter++
 }
 write-host "Stage: windows_services completed" -ForegroundColor Green
