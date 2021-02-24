@@ -1,6 +1,3 @@
-iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
-# need to load power config settings for windows update, so that the system doesnt goes to sleep mode during windows update
-Invoke-Expression power-config |Out-Null 
 $biossetting=@(
 "AcPwrRcvry=Off",
 "AdminSetupLockout=Disabled",
