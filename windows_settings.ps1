@@ -44,7 +44,7 @@ write-host $_ "--------------Nok" -ForegroundColor Red
 }
 }
 write-host "Stage: windows_settings completed" -ForegroundColor Green
-Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'cleaning'
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windows_debloat'
 Set-Runonce
 Stop-Transcript
 Restart-Computer
