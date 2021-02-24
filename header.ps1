@@ -7,6 +7,7 @@ $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
 else{
 $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss") + "_initial-stage_transcript.txt"
 Start-Transcript -path $FileName -NoClobber
+# need to load power config settings for long process like windows update, so that the system doesnt goes to sleep mode during windows update.
 Invoke-Expression power-config |Out-Null 
 write-host " Installing Chocolatey" 
 iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
