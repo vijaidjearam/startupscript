@@ -21,7 +21,85 @@ function Show-FileExtensions
     Stop-Process -processName: Explorer -force # This will restart the Explorer service to make this work.
 }
 #>
+function Test-internet-connectivity{
+while (!(test-connection 8.8.8.8 -Count 1 -Quiet -ErrorAction SilentlyContinue)) {
+    Write-Host -ForegroundColor Red  "Internet Connection down..."
+    sleep 5
+}
+write-host "internet connection is up! -> proceeding with the script" -ForegroundColor Green
+}
+function Set-RunOnce
+  <#
+      .SYNOPSIS
+      Sets a Runonce-Registry Key
+ 
+      .DESCRIPTION
+      Sets a Runonce-Key in the Computer-Registry. Every Program which will be added will run once at system startup.
+      This Command can be used to configure a computer at startup.
+ 
+      .EXAMPLE
+      Set-Runonce -command '%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -file c:\Scripts\start.ps1'
+      Sets a Key to run Powershell at startup and execute C:\Scripts\start.ps1
+ 
+      .NOTES
+      Author: Holger Voges
+      Version: 1.0
+      Date: 2018-08-17
+ 
+      .LINK
+      https://www.netz-weise-it.training/
+  #>
+{
+    [CmdletBinding()]
+    param
+    (
+        #The Name of the Registry Key in the Autorun-Key.
+        [string]
+        $KeyName = 'Run',
 
+        #Command to run
+        [string]
+        #$Command = "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+        $Command = "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; $env:Temp\header.ps1"
+  
+    ) 
+function Test-RegistryValue {
+
+param (
+
+ [parameter(Mandatory=$true)]
+ [ValidateNotNullOrEmpty()]$Path,
+
+[parameter(Mandatory=$true)]
+ [ValidateNotNullOrEmpty()]$Value
+)
+
+try {
+
+Get-ItemProperty -Path $Path | Select-Object -ExpandProperty $Value -ErrorAction Stop | Out-Null
+ return $true
+ }
+
+catch {
+
+return $false
+
+}
+
+}
+
+    
+    if (Test-RegistryValue -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Value $keyname)
+    {
+         Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -Value $Command -Type ExpandString -Force
+        
+    }
+    else
+    {
+       New-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name $KeyName -PropertyType ExpandString -Value $Command
+       write-host "$Command set to registry runonce" -ForegroundColor Green
+    }
+}
 function Enable-RemoteDesktop {
 <#
 .SYNOPSIS
