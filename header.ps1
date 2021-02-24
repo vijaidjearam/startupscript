@@ -1,5 +1,4 @@
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
-iex test-internet-connectivity
 $WarningPreference = 'SilentlyContinue'
 
 if (test-path 'HKCU:\osinstall_local'){
