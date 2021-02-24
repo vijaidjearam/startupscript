@@ -3,14 +3,14 @@ Try
 
 $ipaddr = ((Test-NetConnection).SourceAddress).IPAddress
 $interfaceindex = (get-NetIPAddress -IPAddress $ipaddr).ifIndex
-$DNS1 = "10.57.8.88"
-$DNS2 = "10.5.12.204"
-$DNS3 = "10.5.13.204"
+$DNS1 = ""
+$DNS2 = ""
+$DNS3 = ""
 Set-DnsClient -InterfaceIndex $interfaceindex -UseSuffixWhenRegistering 0
 Set-DnsClient -InterfaceIndex $interfaceindex -RegisterThisConnectionsAddress 1
 Set-DnsClientServerAddress -InterfaceIndex $interfaceindex -ServerAddresses ($DNS1,$DNS2,$DNS3)
-Set-DnsClientGlobalSetting -SuffixSearchList @("ad-urca.univ-reims.fr", "univ-reims.fr")
-Set-DnsClient -InterfaceIndex $interfaceindex -ConnectionSpecificSuffix "ad-urca.univ-reims.fr"
+Set-DnsClientGlobalSetting -SuffixSearchList @("", "")
+Set-DnsClient -InterfaceIndex $interfaceindex -ConnectionSpecificSuffix ""
 write-host "Restarting Network Adapter" -ForegroundColor DarkGreen
 $adapter = Get-CimInstance -ClassName Win32_NetworkAdapter | where {$_.InterfaceIndex -eq $interfaceindex}
 Disable-NetAdapter -Name $adapter.NetConnectionID -Confirm:$false
