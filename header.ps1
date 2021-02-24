@@ -89,6 +89,21 @@ Switch ($stage)
         iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1'))
    
     }
+    'windows_debloat'
+    {
+        write-host "Entering Stage: $stage" -ForegroundColor Green
+        $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
+        Start-Transcript -path $FileName -NoClobber
+        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/win10_debloat.ps1")) | Out-File $env:TEMP\win10_debloat.ps1
+        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/win10_debloat.psm1"))| Out-File $env:TEMP\win10_debloat.psm1
+        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/debloat_preset.txt"))| Out-File $env:TEMP\debloat_preset.txt
+        powershell.exe -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\win10_debloat.ps1 -include $env:TEMP\win10_debloat.psm1 -preset $env:TEMP\debloat_preset.txt
+        write-host "Stage: windows_debloat completed" -ForegroundColor Green
+        Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'cleaning'
+        Set-Runonce
+        Stop-Transcript
+        Restart-Computer
+    }
     'cleaning'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
