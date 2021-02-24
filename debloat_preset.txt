@@ -153,7 +153,8 @@ HideMostUsedApps              # ShowMostUsedApps
 SetWinXMenuCmd
 SetControlPanelSmallIcons     # SetControlPanelLargeIcons     # SetControlPanelCategories
 DisableShortcutInName           # EnableShortcutInName
-# HideShortcutArrow             # ShowShortcutArrow
+# HideShortcutArrow             
+ShowShortcutArrow
 # SetVisualFXPerformance          # SetVisualFXAppearance
 # EnableTitleBarColor           # DisableTitleBarColor
 # SetAppsDarkMode               # SetAppsLightMode
