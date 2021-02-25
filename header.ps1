@@ -46,6 +46,13 @@ Switch ($stage)
         Start-Transcript -path $FileName -NoClobber
         iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1'))
     }
+    'chocolatey_apps'
+    {
+        write-host "Entering Stage: $stage" -ForegroundColor Green
+        $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
+        Start-Transcript -path $FileName -NoClobber
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_apps.ps1'))
+    }
     'windowsupdate_initiate'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
@@ -67,13 +74,7 @@ Switch ($stage)
         Start-Transcript -path $FileName -NoClobber
         iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/network_config.ps1'))
     }
-    'chocolatey_apps'
-    {
-        write-host "Entering Stage: $stage" -ForegroundColor Green
-        $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
-        Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_apps.ps1'))
-    }
+
     'windows_services'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
