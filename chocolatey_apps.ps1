@@ -22,7 +22,8 @@ $chocoapps = @(
     	"sublimetext3",
     	"totalcommander",
     	"vlc",
-    	"vscode" 
+    	"vscode",
+        "office2019"
     	# "aimp",
 )
 cinst -s chocosia -y Powershell | Out-Null 
