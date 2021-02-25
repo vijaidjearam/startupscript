@@ -67,14 +67,6 @@ Switch ($stage)
         Start-Transcript -path $FileName -NoClobber
         iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_followup.ps1'))
     }
-    'network_config'
-    {
-        write-host "Entering Stage: $stage" -ForegroundColor Green
-        $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
-        Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/network_config.ps1'))
-    }
-
     'windows_services'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
