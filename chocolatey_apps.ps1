@@ -23,8 +23,11 @@ $chocoapps = @(
     	"totalcommander",
     	"vlc",
     	"vscode",
-        "office2019"
-    	# "aimp",
+        "office2019",
+        "fusion-inventory",
+        "laps-urca",
+        "insight-student-urca"
+        # "aimp",
 )
 cinst -s chocosia -y Powershell | Out-Null 
 #dependency for dell command update
