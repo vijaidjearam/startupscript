@@ -620,7 +620,7 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroP
 #Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects -Name VisualFXSetting -Value 3
 #Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name UserPreferencesMask -Value "90 12 03 80 10 00 00 00"
 #reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v UserPreferencesMask /t "REG_BINARY" /d "9000038010000000" /f
-Stop-Process -name explore -force
+Stop-Process -name explorer -force
 }
 function set-desktop-icon-small{
 Set-ItemProperty -path HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop -name IconSize -value 36
