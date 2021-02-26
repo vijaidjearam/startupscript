@@ -3439,7 +3439,15 @@ Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Mic
 }
 
 Function uninstallmicrosoftBloatapps {
-Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*Microsoft.WindowsStore*"} | where-object {$_.name -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.name -notlike "*Microsoft.Windows.Photos*"} | Remove-AppxPackage
+$temp = Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*Microsoft.WindowsStore*"} | where-object {$_.name -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.name -notlike "*Microsoft.Windows.Photos*"} 
+ foreach($t in $temp){
+ try{
+    Remove-AppxPackage -Package $t.Name -ErrorAction stop
+   }
+ catch{
+   write-host "unable to remove:"$t.Name -ForegroundColor Red
+   }
+}
 }
 Function installmicrosoftBloatapps {
 Get-AppXPackage | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
