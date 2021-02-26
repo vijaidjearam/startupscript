@@ -18,12 +18,18 @@ Write-host "Cleaning Event Log"
 Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
 Write-host "Completed Cleaning Event Log" 
 iex CleanWinSXS
+Remove-Item -Path HKCU:\osinstall_local
+#dell command update pops up message in the taskbar if there is new driver updates, inspite of setting it to manual schedule update. 
+#so uninstall dell command update , if required it can be installed anytime using chocolatey.
+choco uninstall dellcommandupdate -y
+#installing kaspersky at the end so that it doesnt block the script at the start up
+choco install kes -y
+Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 Pause
 iex DeleteTempFiles
 write-host "Stage: cleaning completed" -ForegroundColor Green
-Remove-Item -Path HKCU:\osinstall_local
-Stop-Transcript
+
 }
 catch
 {
