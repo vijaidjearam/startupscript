@@ -147,7 +147,7 @@ ShowTrayIcons                   # HideTrayIcons
 # ShowSecondsInTaskbar          # HideSecondsFromTaskbar
 #DisableSearchAppInStore         # EnableSearchAppInStore
 DisableNewAppPrompt             # EnableNewAppPrompt
-# HideRecentlyAddedApps         # ShowRecentlyAddedApps
+HideRecentlyAddedApps         # ShowRecentlyAddedApps
 HideMostUsedApps              # ShowMostUsedApps
 # SetWinXMenuPowerShell         
 SetWinXMenuCmd
