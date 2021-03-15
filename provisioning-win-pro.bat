@@ -6,7 +6,7 @@ md %workdir%\Windows\Setup\Scripts
 echo reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -v !test /t REG_SZ -d "cmd /k @powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \" iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))\"" /f > %workdir%\Windows\Setup\Scripts\SetupComplete.cmd
 DISM /unmount-wim /MountDir:%workdir% /commit
 DEL %~dp0sources\install.esd
-robocopy %temp% %~dp0sources install.wim /MT:8
+Dism /Split-Image /ImageFile:%temp%\install.wim /SWMFile:%~dp0sources\install.wim /FileSize:3500
 DEL %temp%\install.wim
 DEL %workdir%
 pause
