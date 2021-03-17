@@ -3442,7 +3442,7 @@ Function uninstallmicrosoftBloatapps {
 $temp = Get-AppxPackage -AllUsers | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"}
  foreach($t in $temp){
  try{
-    Remove-AppxPackage -Package $t.Name -ErrorAction stop
+    Remove-AppxPackage -AllUsers -Package $t.PackageFullName -ErrorAction stop
    }
  catch{
    write-host "unable to remove:"$t.Name -ForegroundColor Red
