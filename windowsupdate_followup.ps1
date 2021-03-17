@@ -17,6 +17,7 @@ Set-Runonce
 Stop-Transcript
 Restart-Computer
 }
+}
 
 catch
 {
