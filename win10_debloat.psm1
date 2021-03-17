@@ -3435,11 +3435,11 @@ Function InstallThirdPartyBloat {
 }
 # Uninstall Provisioned Package
 Function UninstallProvisionedPackage {
-Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} |Remove-AppxProvisionedPackage -online
+Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"} | Remove-AppxProvisionedPackage -online
 }
 
 Function uninstallmicrosoftBloatapps {
-$temp = Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*Microsoft.WindowsStore*"} | where-object {$_.name -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.name -notlike "*Microsoft.Windows.Photos*"} 
+$temp = Get-AppxPackage -AllUsers | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"}
  foreach($t in $temp){
  try{
     Remove-AppxPackage -Package $t.Name -ErrorAction stop
