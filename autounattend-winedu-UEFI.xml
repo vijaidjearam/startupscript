@@ -97,7 +97,7 @@ Notes: This is a test file for win10 install
 				<ProductKey>
 					<!-- Do not uncomment the Key element if you are using trial ISOs -->
 					<!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->
-					<Key>NW6C2-QMPVW-D7KKK-3GKT6-VCFB2</Key>
+					<Key></Key>
 					<WillShowUI>Never</WillShowUI>
 				</ProductKey>
 				<AcceptEula>true</AcceptEula>
