@@ -3439,15 +3439,17 @@ Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Mic
 }
 
 Function uninstallmicrosoftBloatapps {
-$temp = Get-AppxPackage -AllUsers | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"}
- foreach($t in $temp){
- try{
-    Remove-AppxPackage -AllUsers -Package $t.PackageFullName -ErrorAction stop
-   }
- catch{
-   write-host "unable to remove:"$t.Name -ForegroundColor Red
-   }
-}
+#$temp = Get-AppxPackage -AllUsers | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"}
+ #foreach($t in $temp){
+ #try{
+    #Remove-AppxPackage -AllUsers -Package $t.PackageFullName -ErrorAction stop
+  #  Get-AppxPackage $t.PackageFullName | Remove-AppxPackage
+ #  }
+ #catch{
+  # write-host "unable to remove:"$t.Name -ForegroundColor Red
+  # }
+#}
+Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*Microsoft.WindowsStore*"} | where-object {$_.name -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.name -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.name -notlike "*Microsoft.MSPaint*"} | where-object {$_.name -notlike "*Microsoft.NET.Native.Runtime*"} | where-object {$_.name -notlike "*Microsoft.NET.Native.Framework*"} | where-object {$_.name -notlike "*Microsoft.VCLibs*"} | where-object {$_.name -notlike "*Microsoft.Services.Store*"} | where-object {$_.name -notlike "*Microsoft.UI.Xaml*"} | where-object {$_.name -notlike "*Microsoft.UI.Xaml*"} | where-object {$_.name -notlike "*Microsoft.MicrosoftEdge*"} | where-object {$_.name -notlike "*Microsoft.Win32WebViewHost*"} | where-object {$_.name -notlike "*Microsoft.Windows.ShellExperienceHost*"} | where-object {$_.name -notlike "*Windows.PrintDialog*"} | where-object {$_.name -notlike "*Microsoft.WebpImageExtension*"} | where-object {$_.name -notlike "*Microsoft.VP9VideoExtensions*"} | where-object {$_.name -notlike "*Microsoft.UI.Xaml*"} | where-object {$_.name -notlike "*Microsoft.DesktopAppInstaller*"} | where-object {$_.name -notlike "*Microsoft.Windows.CallingShellApp*"} | where-object {$_.name -notlike "*Microsoft.WindowsSoundRecorder*"} | where-object {$_.name -notlike "*Microsoft.StorePurchaseApp*"} | where-object {$_.name -notlike "*AppUp.IntelGraphicsControlPanel*"} | where-object {$_.name -notlike "*Microsoft.Windows.ShellExperienceHost*"} | where-object {$_.name -notlike "*Microsoft.Windows.StartMenuExperienceHost*"} | Remove-AppxPackage
 }
 Function installmicrosoftBloatapps {
 Get-AppXPackage | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
