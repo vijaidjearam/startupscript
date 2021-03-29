@@ -16,7 +16,7 @@ write-host "adding chocolatey internal server address to host file -------------
 choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------Ok"
 New-Item -Path "HKCU:\" -Name osinstall_local
-New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_driverinstall'
+New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windows_debloat'
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
 ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/registryrunonce.ps1')) | Out-File $env:TEMP\header.ps1
 Stop-Transcript
