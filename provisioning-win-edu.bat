@@ -3,7 +3,7 @@ set workdir=c:\temp\%date: =_%_%time: =0%
 set workdir=%workdir:/=_%
 set workdir=%workdir::=_%
 set workdir=%workdir:.=_%
-set workdir=%workdir:.=_%
+set workdir=%workdir:,=_%
 md %workdir%
 DISM /Mount-Wim /WimFile:%temp%\install.wim /index:1 /MountDir:%workdir%
 md %workdir%\Windows\Setup\Scripts
