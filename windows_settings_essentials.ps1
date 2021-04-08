@@ -626,3 +626,11 @@ function set-desktop-icon-small{
 Set-ItemProperty -path HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop -name IconSize -value 36
 Stop-Process -name explorer  # explorer.exe restarts automatically after stopping
 }
+function pin-to-taskbar{
+choco install syspin -y
+syspin "C:\Program Files\Microsoft Office\root\Office16\winword.exe" c:5386
+syspin "C:\Program Files\Microsoft Office\root\Office16\excel.exe" c:5386
+syspin "C:\Program Files\Microsoft Office\root\Office16\powerpnt.exe" c:5386
+syspin "C:\Program Files\Google\Chrome\Application\chrome.exe" c:5386
+}
+
