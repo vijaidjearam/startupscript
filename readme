@@ -1,5 +1,5 @@
 - download windows media creation tool and create you usb. (make sure you download 64 bit image)
-- copy provisioning-win-edu or provisioning-win-pro and autounattend.xml to the root of the usb.
+- copy provisioning-win-edu or provisioning-win-pro and autounattend.xml(UEFI or MBR) to the root of the usb.
 - launch the provisioning-win-edu or provisioning-win-pro according to your needs.
 - wait for the process to complete.
 - If everything goes right with out error your usb would be good to go...
@@ -9,12 +9,4 @@
 
 
 
-snippet : -------------------------------------------------------------------------------------------------------
-source index 4 is windows 10 education 
-dism /Get-WimInfo /WimFile:F:\Sources\install.esd
-dism /Export-Image /SourceImageFile:F:\Sources\install.esd /SourceIndex:4 /DestinationImageFile:C:\Users\username\Desktop\install.wim /Compress:Max /CheckIntegrity
-dism /Export-Image /SourceImageFile:.\install.esd /SourceIndex:4 /DestinationImageFile:.\install.wim /Compress:Max /CheckIntegrity
-DISM /Mount-Wim /WimFile:"install.wim" /index:1 /MountDir:"c:\temp"
-copy setupcomplete.cmd to \Windows\Setup\Scripts\SetupComplete.cmd
-DISM /unmount-wim /MountDir:"c:\temp" /commit
 
