@@ -10,6 +10,9 @@ Function CleanWinSXS {
     Write-Host "Cleaning WinSXS folder, this may take a while, please wait..."
     Dism.exe /online /Cleanup-Image /StartComponentCleanup
 }
+function dontdisplaylastusername-on-logon{
+New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name dontdisplaylastusername -Value 1 -Force
+}
 
 try
 {
@@ -25,6 +28,7 @@ choco uninstall dellcommandupdate -y
 #installing kaspersky at the end so that it doesnt block the script at the start up
 choco install kes -y
 choco source remove -n=chocolatey
+dontdisplaylastusername-on-logon
 Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 Pause
