@@ -32,7 +32,6 @@ $setting = @(
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
 "performance_options_visual_effects",
 "pin-to-taskbar",
-"dontdisplaylastusername-on-logon"
 )
 
 $setting | foreach {
