@@ -63,6 +63,7 @@ if(Test-RegistryValue ('HKCU:\osinstall_local','windowsupdateiteration'))
  {
  $iter = $iter + 1
  Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name windowsupdateiteration -Value $iter -Force
+ write-host Iteration : $iter -ForegroundColor Green
  windowsupdatefollowup
  }
  else
