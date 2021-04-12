@@ -8,7 +8,7 @@ if ($temp.Count -gt 0)
 {
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_followup'
 Set-Runonce
-Install-WindowsUpdate -AcceptAll -AutoReboot
+Install-WindowsUpdate -NotCategory "Drivers" -NotTitle OneDrive -NotKBArticleID KB5000802 -AcceptAll -AutoReboot
 write-host "Stage: windowsupdate_followup completed" -ForegroundColor Green
 Stop-Transcript
 Restart-Computer
