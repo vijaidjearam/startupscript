@@ -13,6 +13,17 @@ Function CleanWinSXS {
 function dontdisplaylastusername-on-logon{
 New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name dontdisplaylastusername -Value 1 -Force
 }
+# Turn On or Off Use sign-in info to auto finish setting up device after update or restart in Windows 10
+function disableautosignin-info{
+New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name DisableAutomaticRestartSignOn -Value 1 -Force
+}
+
+function disable-autologon{
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoAdminLogon -Value 0 -Force
+Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name DefaultDomainName -Force
+Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name DefaultUserName -Force
+Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name DefaultPassword -Force
+}
 
 try
 {
@@ -29,6 +40,8 @@ choco uninstall dellcommandupdate -y
 #choco install kes -y
 choco source remove -n=chocolatey
 dontdisplaylastusername-on-logon
+disableautosignin-info
+disable-autologon
 Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 Pause
