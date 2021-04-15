@@ -39,9 +39,9 @@ choco uninstall dellcommandupdate -y
 #installing kaspersky at the end so that it doesnt block the script at the start up
 choco install kes -y
 choco source remove -n=chocolatey
-dontdisplaylastusername-on-logon
-disableautosignin-info
-disable-autologon
+iex dontdisplaylastusername-on-logon
+iex disableautosignin-info
+iex disable-autologon
 Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 Pause
