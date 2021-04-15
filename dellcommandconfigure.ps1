@@ -137,7 +137,7 @@ write-host "There was an error setting the option: $item " -ForegroundColor Red
 }
 }
 write-host "Stage: dellcommandconfigure completed" -ForegroundColor Green
-Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_initiate'
+Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_apps'
 Set-Runonce
 Stop-Transcript
 Restart-Computer
