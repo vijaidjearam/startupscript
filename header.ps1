@@ -16,7 +16,18 @@ write-host "adding chocolatey internal server address to host file -------------
 choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------Ok"
 New-Item -Path "HKCU:\" -Name osinstall_local
+$manufacturer = (Get-CimInstance -ClassName win32_computersystem | Select-Object Manufacturer).Manufacturer
+if ($manufacturer -like '*dell*')
+{
+write-host "System manufacturer has been detected as Dell - so proceeding with Dell driver update" -ForegroundColor Green
 New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_driverinstall'
+}
+else
+{
+write-host "System manufacturer is not Dell - so proceeding with installing Chocolatey Apps" -ForegroundColor Green
+New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_apps'
+}
+
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
 ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/registryrunonce.ps1')) | Out-File $env:TEMP\header.ps1
 Stop-Transcript
