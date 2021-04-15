@@ -20,7 +20,7 @@ $chocoapps = @(
     	"pdfcreator", 
     	"quicktime",
     	"sublimetext3",
-    	"totalcommander",
+    	"totalcommander"
     	#"vlc",
     	#"vscode",
         #"office2019",
