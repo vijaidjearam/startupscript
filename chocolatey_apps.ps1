@@ -15,18 +15,18 @@ $chocoapps = @(
     	"gimp", 
     	"git", 
     	"googlechrome",
-        "ublockorigin-chrome",
-    	"libreoffice-fresh", 
-    	"pdfcreator", 
-    	"quicktime",
-    	"sublimetext3",
-    	"totalcommander",
-    	"vlc",
-    	"vscode",
-        "office2019",
-        "fusion-inventory",
-        "laps-urca",
-        "insight-student-urca"
+        "ublockorigin-chrome"
+    	#"libreoffice-fresh", 
+    	#"pdfcreator", 
+    	#"quicktime",
+    	#"sublimetext3",
+    	#"totalcommander",
+    	#"vlc",
+    	#"vscode",
+        #"office2019",
+        #"fusion-inventory",
+        #"laps-urca",
+        #"insight-student-urca"
         # "aimp",
 )
 cinst -s chocosia -y Powershell | Out-Null 
