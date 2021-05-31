@@ -29,9 +29,9 @@ if (!(test-path -Path HKLM:\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs
 {
 New-Item -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name RestoreOnStartupURLs
 }
-New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist -Name "2" -Value ”cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx” -Force
-New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "HomepageLocation" -Value ”https://www.iut-troyes.univ-reims.fr/” -Force
+New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist -Name "2" -Value cjpalhdlnbpafiamejdnhcphjbkeiagm;https://clients2.google.com/service/update2/crx -Force
+New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "HomepageLocation" -Value https://www.iut-troyes.univ-reims.fr/ -Force
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "RestoreOnStartup" -Value 4 -Force
-New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs -Name "1" -Value ”https://www.iut-troyes.univ-reims.fr/” -Force
+New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs -Name "1" -Value https://www.iut-troyes.univ-reims.fr/ -Force
 }
 googlechrome-policy
