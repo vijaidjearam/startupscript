@@ -33,5 +33,6 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallFor
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "HomepageLocation" -Value https://www.iut-troyes.univ-reims.fr/ -Force
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "RestoreOnStartup" -Value 4 -Force
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs -Name 1 -Value https://www.iut-troyes.univ-reims.fr/ -Force
+New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "DefaultBrowserSettingEnabled" -Value 0 -Force
 }
 googlechrome-policy
