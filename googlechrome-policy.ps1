@@ -1,6 +1,10 @@
 function googlechrome-policy{
 New-Item -ItemType Directory -Force -Path $env:TEMP\Scripts\GPO\
-wget https://dl.google.com/dl/edgedl/chrome/policy/policy_templates.zip -OutFile $env:TEMP\Scripts\GPO\Browserpolicy_templates.zip
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://dl.google.com/dl/edgedl/chrome/policy/policy_templates.zip","$env:TEMP\Scripts\GPO\Browserpolicy_templates.zip")
+
+#wget https://dl.google.com/dl/edgedl/chrome/policy/policy_templates.zip -OutFile $env:TEMP\Scripts\GPO\Browserpolicy_templates.zip
+
 Expand-Archive $env:TEMP\Scripts\GPO\Browserpolicy_templates.zip -DestinationPath $env:TEMP\Scripts\GPO -Force
 cp $env:TEMP\Scripts\GPO\windows\admx\*.admx C:\Windows\PolicyDefinitions\ -Force
 $path =" C:\Windows\PolicyDefinitions\fr-FR\"
