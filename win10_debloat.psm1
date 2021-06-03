@@ -3435,7 +3435,17 @@ Function InstallThirdPartyBloat {
 }
 # Uninstall Provisioned Package
 Function UninstallProvisionedPackage {
-Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"} | Remove-AppxProvisionedPackage -online
+#Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"} | Remove-AppxProvisionedPackage -online
+$Keep = @(
+    'Microsoft.WindowsStore'
+    'Microsoft.WindowsCalculator'
+    'Microsoft.Windows.Photos'
+    'Microsoft.MSPaint'
+    'Microsoft.MicrosoftEdge.Stable'
+
+    )
+
+Get-AppxProvisionedPackage -Online | Where-Object { $Keep -notcontains $_.DisplayName } | Remove-AppxProvisionedPackage -Online
 }
 
 Function uninstallmicrosoftBloatapps {
