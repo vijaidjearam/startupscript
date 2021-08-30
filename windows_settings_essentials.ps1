@@ -636,6 +636,9 @@ syspin "C:\Program Files\Google\Chrome\Application\chrome.exe" c:5386
 function dontdisplaylastusername-on-logon{
 New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name dontdisplaylastusername -Value 1 -Force
 }
+function dontdisplaynewsaninterestsintaskbar{
+New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds' -Name ShellFeedsTaskbarViewMode -Value 2 -Force
+}
 function googlechrome-policy{
 New-Item -ItemType Directory -Force -Path $env:TEMP\Scripts\GPO\
 $WebClient = New-Object System.Net.WebClient
