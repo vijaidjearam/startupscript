@@ -160,7 +160,8 @@ ShowShortcutArrow
 # SetAppsDarkMode               # SetAppsLightMode
 # SetSystemLightMode            # SetSystemDarkMode
 # AddENKeyboard                 # RemoveENKeyboard
-EnableNumlock                 # DisableNumlock
+# EnableNumlock                 # DisableNumlock
+EnableNumlockloginscreen
 # DisableEnhPointerPrecision    # EnableEnhPointerPrecision
 # SetSoundSchemeNone            # SetSoundSchemeDefault
 DisableStartupSound           # EnableStartupSound
