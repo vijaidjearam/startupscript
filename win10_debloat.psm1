@@ -3456,7 +3456,22 @@ $Keep = @(
     'Microsoft.Windows.Photos'
     'Microsoft.MSPaint'
     'Microsoft.MicrosoftEdge.Stable'
-
+    'AppUp.IntelGraphicsExperience'
+    'AppUp.IntelOptaneMemoryandStorageManagement'
+    'Microsoft.DesktopAppInstaller'
+    'Microsoft.GetHelp'
+    'Microsoft.Getstarted'
+    'Microsoft.HEIFImageExtension'
+    'Microsoft.Microsoft3DViewer'
+    'Microsoft.MicrosoftOfficeHub'
+    'Microsoft.VCLibs.140.00'
+    'Microsoft.VP9VideoExtensions'
+    'Microsoft.WebMediaExtensions'
+    'Microsoft.WebpImageExtension'
+    'Microsoft.WindowsCamera'
+    'microsoft.windowscommunicationsapps'
+    'Microsoft.WindowsSoundRecorder'
+    'WavesAudio.MaxxAudioProforDell2019'
     )
 
 Get-AppxProvisionedPackage -Online | Where-Object { $Keep -notcontains $_.DisplayName } | Remove-AppxProvisionedPackage -Online
