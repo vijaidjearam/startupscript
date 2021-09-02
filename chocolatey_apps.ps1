@@ -11,7 +11,7 @@ $chocoapps = @(
         "ublockorigin-firefox"
     	"flashplayeractivex",
     	"flashplayerplugin", 
-    	"foxitreader", 
+    	#"foxitreader", 
     	"gimp", 
     	"git", 
     	"googlechrome",
