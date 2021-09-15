@@ -9,8 +9,8 @@ $chocoapps = @(
     	"filezilla", 
     	"firefox", 
         "ublockorigin-firefox"
-    	"flashplayeractivex",
-    	"flashplayerplugin", 
+    	#"flashplayeractivex",
+    	#"flashplayerplugin", 
     	#"foxitreader", 
     	"gimp", 
     	"git", 
@@ -22,11 +22,11 @@ $chocoapps = @(
     	"sublimetext3",
     	"totalcommander",
     	"vlc",
-    	"vscode",
-        "office2019",
-        "fusion-inventory",
-        "laps-urca",
-        "insight-student-urca"
+    	"vscode"
+        #"office2019",
+        #"fusion-inventory",
+        #"laps-urca",
+        #"insight-student-urca"
         # "aimp",
 )
 cinst -s chocosia -y Powershell | Out-Null 
