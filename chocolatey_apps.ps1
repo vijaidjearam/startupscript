@@ -3,12 +3,12 @@ Try
 $chocoapps = @(
     	"7zip.install",
         "dotnetfx",
-    	"adobeshockwaveplayer",
+    	#"adobeshockwaveplayer",
     	"ccleaner",
     	"dellcommandupdate", 
     	"filezilla", 
     	"firefox", 
-        "ublockorigin-firefox"
+        #"ublockorigin-firefox"
     	#"flashplayeractivex",
     	#"flashplayerplugin", 
     	#"foxitreader", 
@@ -23,10 +23,10 @@ $chocoapps = @(
     	"totalcommander",
     	"vlc",
     	"vscode"
-        #"office2019",
-        #"fusion-inventory",
-        #"laps-urca",
-        #"insight-student-urca"
+        "office2019",
+        "fusion-inventory",
+        "laps-urca",
+        "insight-student-urca"
         # "aimp",
 )
 cinst -s chocosia -y Powershell | Out-Null 
