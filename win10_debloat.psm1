@@ -3448,6 +3448,7 @@ Function InstallThirdPartyBloat {
 	Get-AppxPackage -AllUsers "XINGAG.XING" | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 }
 # Uninstall Provisioned Package
+# hint: have removed  microsoft.windowscommunicationsapps which corresponds to windows mail and calendar app 
 Function UninstallProvisionedPackage {
 #Get-AppxProvisionedPackage -online | where-object {$_.packagename -notlike "*Microsoft.WindowsStore*"} | where-object {$_.packagename -notlike "*Microsoft.WindowsCalculator*"} | where-object {$_.packagename -notlike "*Microsoft.Windows.Photos*"} | where-object {$_.packagename -notlike "*Microsoft.MSPaint*"} | where-object {$_.packagename -notlike "*Microsoft.NET.Native.Runtime*"} | Remove-AppxProvisionedPackage -online
 $Keep = @(
@@ -3469,7 +3470,6 @@ $Keep = @(
     'Microsoft.WebMediaExtensions'
     'Microsoft.WebpImageExtension'
     'Microsoft.WindowsCamera'
-    'microsoft.windowscommunicationsapps'
     'Microsoft.WindowsSoundRecorder'
     'WavesAudio.MaxxAudioProforDell2019'
     )
