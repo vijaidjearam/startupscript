@@ -14,5 +14,5 @@ DISM /unmount-wim /MountDir:%workdir% /commit
 DEL %~dp0sources\install.esd
 Dism /Split-Image /ImageFile:%temp%\install.wim /SWMFile:%~dp0sources\install.swm /FileSize:3500
 DEL %temp%\install.wim
-DEL %workdir%
+rmdir %workdir% /s /q
 pause
