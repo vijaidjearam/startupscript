@@ -1,4 +1,4 @@
-dism /Export-Image /SourceImageFile:%~dp0sources\install.esd /SourceIndex:6 /DestinationImageFile:%temp%\install.wim /Compress:Max /CheckIntegrity
+dism /Export-Image /SourceImageFile:%~dp0sources\install.wim /SourceIndex:6 /DestinationImageFile:%temp%\install.wim /Compress:Max /CheckIntegrity
 set workdir=%date: =_%_%time: =0%
 set workdir=%workdir:/=_%
 set workdir=%workdir::=_%
