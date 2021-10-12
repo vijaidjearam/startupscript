@@ -25,7 +25,7 @@ $chocoapps = @(
     	"vscode"
         "office2019",
         "fusion-inventory",
-        "laps-urca",
+        "laps-urca"
         #"insight-student-urca"
         # "aimp",
 )
