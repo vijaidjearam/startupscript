@@ -11,8 +11,8 @@ $chocoapps = @(
         #"ublockorigin-firefox"
     	#"flashplayeractivex",
     	#"flashplayerplugin", 
-    	#"foxitreader", 
-    	#"gimp", 
+    	"foxitreader", 
+    	"gimp", 
     	"git", 
     	"googlechrome",
         "ublockorigin-chrome",
@@ -23,9 +23,9 @@ $chocoapps = @(
     	"totalcommander",
     	"vlc",
     	"vscode"
-        #"office2019",
-        #"fusion-inventory",
-        #"laps-urca",
+        "office2019",
+        "fusion-inventory",
+        "laps-urca",
         #"insight-student-urca"
         # "aimp",
 )
