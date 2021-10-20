@@ -5,14 +5,14 @@ $chocoapps = @(
         "dotnetfx",
     	#"adobeshockwaveplayer",
     	"ccleaner",
-    	#"dellcommandupdate", 
+    	"dellcommandupdate", 
     	"filezilla", 
     	"firefox", 
         #"ublockorigin-firefox"
     	#"flashplayeractivex",
     	#"flashplayerplugin", 
     	"foxitreader", 
-    	#"gimp", 
+    	"gimp", 
     	"git", 
     	"googlechrome",
         "ublockorigin-chrome",
@@ -20,13 +20,13 @@ $chocoapps = @(
     	"pdfcreator", 
     	"quicktime",
     	"sublimetext3",
-    	#"totalcommander",
+    	"totalcommander",
     	"vlc",
-    	"vscode"
-        "office365"
-        #"fusion-inventory",
-        #"laps-urca"
-        #"insight-student-urca"
+    	"vscode",
+        "office2019",
+        "fusion-inventory",
+        "laps-urca",
+        "insight-student-urca"
         # "aimp",
 )
 cinst -s chocosia -y Powershell | Out-Null 
