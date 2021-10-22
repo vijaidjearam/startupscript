@@ -62,7 +62,9 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey_apps.ps1'))
+        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey.ps1")) | Out-File $env:TEMP\chocolatey.ps1
+        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey-apps.txt"))| Out-File $env:TEMP\chocolatey-apps.txt
+        powershell.exe -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\chocolatey.ps1 -preset $env:TEMP\chocolatey-apps.txt
     }
     'windowsupdate_initiate'
     {
