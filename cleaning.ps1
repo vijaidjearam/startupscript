@@ -57,6 +57,7 @@ Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 Pause
 iex DeleteTempFiles
+iex deleteheaderfile
 write-host "Stage: cleaning completed" -ForegroundColor Green
 
 }
