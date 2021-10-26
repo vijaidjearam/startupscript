@@ -8,7 +8,7 @@ firefox
 #ublockorigin-firefox
 #flashplayeractivex
 #flashplayerplugin
-foxitreader 
+#foxitreader 
 gimp
 git
 googlechrome
@@ -23,4 +23,4 @@ vscode
 office2019
 fusion-inventory
 laps-urca
-insight-student-urca
+#insight-student-urca
