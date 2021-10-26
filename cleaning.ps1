@@ -11,6 +11,7 @@ Function deleteheaderfile {
     if (Test-Path $FileName) 
         {
         Remove-Item $FileName
+        write-host $Filename "--Deleted"
         }
 }
 
