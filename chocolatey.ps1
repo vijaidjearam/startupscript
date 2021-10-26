@@ -1,12 +1,3 @@
-
-###Credits to###
-##########
-# Win 10 / Server 2016 / Server 2019 Initial Setup Script - Main execution loop
-# Author: Disassembler <disassembler@dasm.cz>
-# Version: v3.10, 2020-07-15
-# Source: https://github.com/Disassembler0/Win10-Initial-Setup-Script
-##########
-
 # Relaunch the script with administrator privileges
 Function RequireAdmin {
 	If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {
@@ -14,6 +5,8 @@ Function RequireAdmin {
 		Exit
 	}
 }
+$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
+Start-Transcript -path $FileName -NoClobber
 
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
 $apps = @()
