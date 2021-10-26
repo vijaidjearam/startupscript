@@ -5,6 +5,15 @@ Function DeleteTempFiles {
     Remove-Item $tempfolders -force -recurse 2>&1 | Out-Null
 }
 
+# Delete Header.ps1 in c:\windows\temp\header.ps1
+Function deleteheaderfile {
+    $FileName = "c:\windows\temp\header.ps1"
+    if (Test-Path $FileName) 
+        {
+        Remove-Item $FileName
+        }
+}
+
 # Clean WinSXS folder (WARNING: this takes a while!)
 Function CleanWinSXS {
     Write-Host "Cleaning WinSXS folder, this may take a while, please wait..."
