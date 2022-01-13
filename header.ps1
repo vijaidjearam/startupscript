@@ -10,7 +10,8 @@ Start-Transcript -path $FileName -NoClobber
 # need to load power config settings for long process like windows update, so that the system doesnt goes to sleep mode during windows update.
 Invoke-Expression power_config |Out-Null 
 write-host " Installing Chocolatey" 
-iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
+#iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1")) | Out-Null
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 write-host "Chocolatey Installed Successfully --------------Ok"
 write-host "adding chocolatey internal server address to host file --------------Ok"
 choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
