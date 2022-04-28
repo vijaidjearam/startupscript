@@ -16,6 +16,8 @@ write-host "Chocolatey Installed Successfully --------------Ok"
 write-host "adding chocolatey internal server address to host file --------------Ok"
 choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------Ok"
+#Enabling insecure guest logons for accessing network shares anonymously
+Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation -Name AllowInsecureGuestAuth -Value 1 -Force
 New-Item -Path "HKCU:\" -Name osinstall_local
 $manufacturer = (Get-CimInstance -ClassName win32_computersystem | Select-Object Manufacturer).Manufacturer
 if ($manufacturer -like '*dell*')
