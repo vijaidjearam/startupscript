@@ -53,6 +53,8 @@ While ($i -lt $args.Length) {
 }
 
 # Call the desired app functions
+#Enabling insecure guest logons for accessing network shares anonymously
+Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation -Name AllowInsecureGuestAuth -Value 1 -Force
 $apps | ForEach-Object { 
     $counter++
     Write-Progress -Activity 'Install Apps' -CurrentOperation $_ -PercentComplete (($counter / $apps.count) * 100)
