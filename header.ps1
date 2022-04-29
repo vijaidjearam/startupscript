@@ -17,6 +17,7 @@ write-host "adding chocolatey internal server address to host file -------------
 choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------Ok"
 #Enabling insecure guest logons for accessing network shares anonymously
+Invoke-Expression AllowInsecureGuestAuth
 if (Test-Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation)
 {
 Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation -Name AllowInsecureGuestAuth -Value 1 -Force
