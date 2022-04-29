@@ -17,6 +17,7 @@ write-host "adding chocolatey internal server address to host file -------------
 choco source add -n chocosia -s "http://choco.local.iut-troyes.univ-reims.fr/repository/chocolatey-group/" --priority=1 | Out-Null
 write-host "Internal chocolatey configured --------------Ok"
 #Enabling insecure guest logons for accessing network shares anonymously
+try{
 Invoke-Expression AllowInsecureGuestAuth
 if (Test-Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation)
 {
@@ -27,6 +28,13 @@ else
 New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows -Name LanmanWorkstation -Force
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation -Name AllowInsecureGuestAuth -Value 1 -Force
 }
+write-host "AllowInsecureGuestAuth-----OK" -ForegroundColor Green
+}
+catch{
+write-host  ""
+write-host  "AllowInsecureGuestAuth-----Nok" -ForegroundColor Red
+}
+
 New-Item -Path "HKCU:\" -Name osinstall_local
 $manufacturer = (Get-CimInstance -ClassName win32_computersystem | Select-Object Manufacturer).Manufacturer
 if ($manufacturer -like '*dell*')
