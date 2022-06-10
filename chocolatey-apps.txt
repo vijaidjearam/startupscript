@@ -14,7 +14,7 @@ gimp
 git
 googlechrome
 ublockorigin-chrome
-#libreoffice-fresh
+libreoffice-fresh
 #pdfcreator
 quicktime
 sublimetext4
