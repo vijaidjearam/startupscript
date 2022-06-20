@@ -44,6 +44,8 @@ choco source remove -n=chocolatey
 iex dontdisplaylastusername-on-logon
 iex disableautosignin-info
 iex disable-autologon
+# Reset Administrator password to Blank
+Set-LocalUser -name Administrateur -Password ([securestring]::new())
 Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 Pause
