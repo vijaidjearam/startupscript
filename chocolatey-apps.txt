@@ -1,6 +1,7 @@
 #To exclude a software package please add "#" before the software name
 7zip.install
 dotnetfx
+adobereader
 #adobeshockwaveplayer
 #ccleaner
 dellcommandupdate
@@ -18,7 +19,7 @@ firefox
 #flashplayeractivex
 #flashplayerplugin
 #foxitreader 
-#gimp
+gimp
 git
 googlechrome
 ublockorigin-chrome
@@ -31,10 +32,10 @@ vlc
 vscode
 #office365
 office2019
-#fusion-inventory
-#laps-urca
-#insight-student-urca
-#microsoft-teams.install
+fusion-inventory
+laps-urca
+insight-student-urca
+microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
 #zoom
 #pdfxchangeeditor
 #xmind
