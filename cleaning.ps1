@@ -39,7 +39,7 @@ Remove-Item -Path HKCU:\osinstall_local
 #so uninstall dell command update , if required it can be installed anytime using chocolatey.
 choco uninstall dellcommandupdate -y
 #installing kaspersky at the end so that it doesnt block the script at the start up
-choco install kes -y
+choco install f-secure -y
 choco source remove -n=chocolatey
 iex dontdisplaylastusername-on-logon
 iex disableautosignin-info
