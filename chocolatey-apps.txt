@@ -1,7 +1,7 @@
 #To exclude a software package please add "#" before the software name
 7zip.install
 dotnetfx
-adobereader
+adobereader -params '"/DesktopIcon /UpdateMode:4"'
 #adobeshockwaveplayer
 #ccleaner
 dellcommandupdate
