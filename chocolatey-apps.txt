@@ -36,6 +36,7 @@ fusion-inventory
 laps-urca
 insight-student-urca
 microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
+velociraptor
 #zoom
 #pdfxchangeeditor
 #xmind
