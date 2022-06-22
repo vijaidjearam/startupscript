@@ -57,7 +57,7 @@ $apps | ForEach-Object {
     $counter++
     Write-Progress -Activity 'Install Apps' -CurrentOperation $_ -PercentComplete (($counter / $apps.count) * 100)
     Start-Sleep -Milliseconds 200
-    cinst -y --ignore-checksums $_ | Out-Null
+    choco install -y --ignore-checksums $_ | Out-Null
     if($LASTEXITCODE -eq 0){write-host $_"--------Ok" -ForegroundColor Green}
     else{write-host $_"--failed ----------Nok" -ForegroundColor Red}
     }
