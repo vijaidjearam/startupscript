@@ -5,7 +5,7 @@ Function RequireAdmin {
 		Exit
 	}
 }
-$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
+$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_chocolatey_transcript.txt"
 Start-Transcript -path $FileName -NoClobber
 
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
