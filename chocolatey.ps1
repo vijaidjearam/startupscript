@@ -57,9 +57,19 @@ $apps | ForEach-Object {
     $counter++
     Write-Progress -Activity 'Install Apps' -CurrentOperation $_ -PercentComplete (($counter / $apps.count) * 100)
     Start-Sleep -Milliseconds 200
+    if ($_.contains('-params')){
+    $ts = $_ -split " "
+    $app = $ts[0]
+    $param = $ts[2..$ts.Length] -join " "
+    choco install -y --ignore-checksums --params $param $app | Out-Null
+    if($LASTEXITCODE -eq 0){write-host $_"--------Ok" -ForegroundColor Green}
+    else{write-host $_"--failed ----------Nok" -ForegroundColor Red}
+    }
+    else{
     choco install -y --ignore-checksums $_ | Out-Null
     if($LASTEXITCODE -eq 0){write-host $_"--------Ok" -ForegroundColor Green}
     else{write-host $_"--failed ----------Nok" -ForegroundColor Red}
+    }
     }
 write-host "Stage: chocolatey_apps completed" -ForegroundColor Green
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'windowsupdate_initiate'
