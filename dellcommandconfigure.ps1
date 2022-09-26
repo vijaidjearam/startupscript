@@ -94,7 +94,7 @@ $biossetting=@(
 "WakeOnLan=LanWithPxeBoot",
 "WarningsAndErr=PromptWrnErr",
 "WdtOsBootProtection=Disabled",
-"WirelessLan=Disabled"
+"WirelessLan=Enabled"
 )
 choco install dellcommandconfigure -y
 foreach($item in $biossetting){
