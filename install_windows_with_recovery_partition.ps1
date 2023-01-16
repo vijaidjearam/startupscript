@@ -40,7 +40,7 @@ $manufacturer = (Get-CimInstance -ClassName win32_computersystem | Select-Object
 if ($manufacturer -like '*dell*')
 {
 write-host "System manufacturer has been detected as Dell - so proceeding with Dell driver update" -ForegroundColor Green
-New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_driverinstall'
+New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'cleaning'
 }
 else
 {
