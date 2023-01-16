@@ -51,7 +51,7 @@ write-host "Stage: cleaning completed" -ForegroundColor Green
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/clonezilla_recovery/main/powershell/clonezilla-recovery-partition.ps1'))
 write-host "Stage: Recovery Partition created" -ForegroundColor Green
 #installing F-secure at the end so that it doesnt block the script at the start up
-choco install f-secure -y
+#choco install f-secure -y
 Pause
 }
 catch
