@@ -38,8 +38,6 @@ Remove-Item -Path HKCU:\osinstall_local
 #dell command update pops up message in the taskbar if there is new driver updates, inspite of setting it to manual schedule update. 
 #so uninstall dell command update , if required it can be installed anytime using chocolatey.
 choco uninstall dellcommandupdate -y
-#installing kaspersky at the end so that it doesnt block the script at the start up
-choco install f-secure -y
 choco source remove -n=chocolatey
 iex dontdisplaylastusername-on-logon
 iex disableautosignin-info
@@ -52,13 +50,15 @@ iex DeleteTempFiles
 write-host "Stage: cleaning completed" -ForegroundColor Green
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/clonezilla_recovery/main/powershell/clonezilla-recovery-partition.ps1'))
 write-host "Stage: Recovery Partition created" -ForegroundColor Green
+#installing F-secure at the end so that it doesnt block the script at the start up
+choco install f-secure -y
 Pause
 }
 catch
 {
 write-host "Stage: cleaning Failed" -ForegroundColor Red
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value cleaning
-Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/install_windows_with_recovery_partition.ps1'))"
 Stop-Transcript
 Pause
 }
