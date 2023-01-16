@@ -49,7 +49,7 @@ New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_ap
 }
 
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
-((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/registryrunonce.ps1')) | Out-File $env:TEMP\header.ps1
+((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/registry_run_once_install_win_with_recovery.ps1')) | Out-File $env:TEMP\header.ps1
 Stop-Transcript
 }
 
