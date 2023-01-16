@@ -48,10 +48,11 @@ iex disable-autologon
 Set-LocalUser -name Administrateur -Password ([securestring]::new())
 Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
-Pause
 iex DeleteTempFiles
 write-host "Stage: cleaning completed" -ForegroundColor Green
-
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/clonezilla_recovery/main/powershell/clonezilla-recovery-partition.ps1'))
+write-host "Stage: Recovery Partition created" -ForegroundColor Green
+Pause
 }
 catch
 {
