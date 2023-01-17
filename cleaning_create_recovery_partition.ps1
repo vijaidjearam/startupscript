@@ -48,6 +48,7 @@ Stop-Transcript
 Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
 iex DeleteTempFiles
 write-host "Stage: cleaning completed" -ForegroundColor Green
+write-host "Minimize this window and install any other apps that are required. When you are done with all the apps hit enter to create the clonezilla partition" -ForegroundColor Green
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/clonezilla_recovery/main/powershell/clonezilla-recovery-partition.ps1'))
 write-host "Stage: Recovery Partition created" -ForegroundColor Green
 #installing F-secure at the end so that it doesnt block the script at the start up
