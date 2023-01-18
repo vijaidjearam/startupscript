@@ -42,7 +42,7 @@ choco uninstall dellcommandupdate -y
 #choco install f-secure -y
 choco install f-secure-autonome -y
 choco source remove -n=chocolatey
-iex dontdisplaylastusername-on-logon
+# iex dontdisplaylastusername-on-logon
 iex disableautosignin-info
 iex disable-autologon
 # Reset Administrator password to Blank
