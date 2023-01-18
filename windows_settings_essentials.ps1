@@ -21,6 +21,15 @@ function Show-FileExtensions
     Stop-Process -processName: Explorer -force # This will restart the Explorer service to make this work.
 }
 #>
+
+function renamepcwithserialnumber{
+$prefix = "IUT-"
+$serial = Get-ComputerInfo | Select-Object BiosSeralNumber
+$serial = $serial.BiosSeralNumber
+$computername = $prefix + $serial
+Rename-Computer -NewName $computername -Force -ErrorAction SilentlyContinue
+}
+
 function Test-internet-connectivity{
 while (!(test-connection 8.8.8.8 -Count 1 -Quiet -ErrorAction SilentlyContinue)) {
     Write-Host -ForegroundColor Red  "Internet Connection down..."
@@ -63,6 +72,7 @@ function Set-RunOnce
         $Command = "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; $env:Temp\header.ps1"
   
     ) 
+
 function Test-RegistryValue {
 
 param (
