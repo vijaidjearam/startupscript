@@ -29,7 +29,7 @@ libreoffice-fresh
 sublimetext4
 #totalcommander
 vlc
-#vscode
+vscode
 office365
 #office2019
 #fusion-inventory
