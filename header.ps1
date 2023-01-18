@@ -1,6 +1,9 @@
 iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
 $WarningPreference = 'SilentlyContinue'
 
+# Change the name of the pc to IUT-serialnumber
+Invoke-Expression renamepcwithserialnumber
+
 if (test-path 'HKCU:\osinstall_local'){
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
 }
