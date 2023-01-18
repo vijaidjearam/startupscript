@@ -23,20 +23,20 @@ foxitreader
 #git
 googlechrome
 ublockorigin-chrome
-#libreoffice-fresh
+libreoffice-fresh
 #pdfcreator
 #quicktime
-#sublimetext4
+sublimetext4
 #totalcommander
 vlc
 #vscode
 office365
 #office2019
-fusion-inventory
-laps-urca
+#fusion-inventory
+#laps-urca
 #insight-student-urca
 microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
-velociraptor
+#velociraptor
 #zoom
 #pdfxchangeeditor
 #xmind
