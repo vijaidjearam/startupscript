@@ -30,13 +30,13 @@ libreoffice-fresh
 #totalcommander
 vlc
 vscode
-#office365
-office2019
-#fusion-inventory
-#laps-urca
+office365
+#office2019
+fusion-inventory
+laps-urca
 #insight-student-urca
 microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
-#velociraptor
-#zoom
+velociraptor
+zoom
 #pdfxchangeeditor
 #xmind
