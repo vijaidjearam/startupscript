@@ -31,7 +31,7 @@ totalcommander
 vlc
 vscode
 #office365
-#office2019
+office2019
 fusion-inventory
 #laps-urca
 #insight-student-urca
