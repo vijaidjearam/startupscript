@@ -39,14 +39,14 @@ DisableUWPBackgroundApps        # EnableUWPBackgroundApps
 # DisableUWPVoiceActivation     # EnableUWPVoiceActivation
 # DisableUWPNotifications       # EnableUWPNotifications
 # DisableUWPAccountInfo         # EnableUWPAccountInfo
-# DisableUWPContacts            # EnableUWPContacts
-# DisableUWPCalendar            # EnableUWPCalendar
-# DisableUWPPhoneCalls          # EnableUWPPhoneCalls
-# DisableUWPCallHistory         # EnableUWPCallHistory
-# DisableUWPEmail               # EnableUWPEmail
+DisableUWPContacts            # EnableUWPContacts
+DisableUWPCalendar            # EnableUWPCalendar
+DisableUWPPhoneCalls          # EnableUWPPhoneCalls
+DisableUWPCallHistory         # EnableUWPCallHistory
+DisableUWPEmail               # EnableUWPEmail
 # DisableUWPTasks               # EnableUWPTasks
-# DisableUWPMessaging           # EnableUWPMessaging
-# DisableUWPRadios              # EnableUWPRadios
+DisableUWPMessaging           # EnableUWPMessaging
+DisableUWPRadios              # EnableUWPRadios
 # DisableUWPOtherDevices        # EnableUWPOtherDevices
 # DisableUWPDiagInfo            # EnableUWPDiagInfo
 # DisableUWPFileSystem          # EnableUWPFileSystem
@@ -55,8 +55,7 @@ DisableUWPBackgroundApps        # EnableUWPBackgroundApps
 ### Security Tweaks ###
 SetUACLow                     # SetUACHigh
 EnableSharingMappedDrives     # DisableSharingMappedDrives
-# DisableAdminShares              
-EnableAdminShares
+EnableAdminShares             # DisableAdminShares              
 # DisableFirewall               # EnableFirewall
 HideDefenderTrayIcon          # ShowDefenderTrayIcon
 DisableDefender               # EnableDefender
@@ -79,8 +78,7 @@ SetCurrentNetworkPrivate        # SetCurrentNetworkPublic
 # SetUnknownNetworksPrivate     # SetUnknownNetworksPublic
 # DisableNetDevicesAutoInst     # EnableNetDevicesAutoInst
 # DisableHomeGroups             # EnableHomeGroups
-# DisableSMB1                   
-EnableSMB1
+EnableSMB1                      # DisableSMB1                   
 # DisableSMBServer              # EnableSMBServer
 # DisableNetBIOS                # EnableNetBIOS
 # DisableLLMNR                  # EnableLLMNR
@@ -104,13 +102,11 @@ EnableUpdateMSProducts          # DisableUpdateMSProducts
 # DisableMaintenanceWakeUp        # EnableMaintenanceWakeUp
 # DisableAutoRestartSignOn      # EnableAutoRestartSignOn
 DisableSharedExperiences        # EnableSharedExperiences
-# EnableClipboardHistory        
-DisableClipboardHistory
+DisableClipboardHistory         # EnableClipboardHistory  
 DisableAutoplay                 # EnableAutoplay
 DisableAutorun                  # EnableAutorun
 # DisableRestorePoints          # EnableRestorePoints #setting has been already enabled in windows setting file
-# EnableStorageSense            
-DisableStorageSense
+DisableStorageSense             # EnableStorageSense 
 DisableDefragmentation        # EnableDefragmentation
 DisableSuperfetch             # EnableSuperfetch      # The performance gains of Superfetch may be unnoticeable when Windows 10 is installed on an SSD
 DisableIndexing               # EnableIndexing   # since the machine is in frozen state, with it switched off, we can save CPU and RAM resources.
@@ -128,10 +124,8 @@ EnableNTFSLongPaths             # DisableNTFSLongPaths
 DisableActionCenter             # EnableActionCenter
 # DisableLockScreen               # EnableLockScreen
 # DisableLockScreenRS1          # EnableLockScreenRS1
-# HideNetworkFromLockScreen       
-ShowNetworkOnLockScreen
-# HideShutdownFromLockScreen      
-ShowShutdownOnLockScreen
+ShowNetworkOnLockScreen         # HideNetworkFromLockScreen 
+ShowShutdownOnLockScreen        # HideShutdownFromLockScreen
 DisableLockScreenBlur           # EnableLockScreenBlur
 DisableAeroShake              # EnableAeroShake
 #DisableAccessibilityKeys        # EnableAccessibilityKeys
@@ -149,12 +143,10 @@ ShowTrayIcons                   # HideTrayIcons
 DisableNewAppPrompt             # EnableNewAppPrompt
 HideRecentlyAddedApps         # ShowRecentlyAddedApps
 HideMostUsedApps              # ShowMostUsedApps
-# SetWinXMenuPowerShell         
-SetWinXMenuCmd
+SetWinXMenuCmd                # SetWinXMenuPowerShell 
 SetControlPanelSmallIcons     # SetControlPanelLargeIcons     # SetControlPanelCategories
 DisableShortcutInName           # EnableShortcutInName
-# HideShortcutArrow             
-ShowShortcutArrow
+ShowShortcutArrow               # HideShortcutArrow  
 # SetVisualFXPerformance          # SetVisualFXAppearance
 # EnableTitleBarColor           # DisableTitleBarColor
 # SetAppsDarkMode               # SetAppsLightMode
@@ -171,19 +163,16 @@ DisableStartupSound           # EnableStartupSound
 
 ### Explorer UI Tweaks ###
 ShowExplorerTitleFullPath     # HideExplorerTitleFullPath
-# ShowKnownExtensions             # HideKnownExtensions #setting has been already enabled in windows setting file
-# ShowHiddenFiles                 # HideHiddenFiles
+ShowKnownExtensions             # HideKnownExtensions #setting has been already enabled in windows setting file
+ShowHiddenFiles                 # HideHiddenFiles
 # ShowSuperHiddenFiles          # HideSuperHiddenFiles
 # ShowEmptyDrives               # HideEmptyDrives
 # ShowFolderMergeConflicts      # HideFolderMergeConflicts
 EnableNavPaneExpand             # DisableNavPaneExpand
-# ShowNavPaneAllFolders         
-HideNavPaneAllFolders
-# ShowNavPaneLibraries          
-HideNavPaneLibraries
+HideNavPaneAllFolders           # ShowNavPaneAllFolders         
+HideNavPaneLibraries           # ShowNavPaneLibraries  
 EnableFldrSeparateProcess     # DisableFldrSeparateProcess
-# EnableRestoreFldrWindows      
-DisableRestoreFldrWindows
+DisableRestoreFldrWindows     # EnableRestoreFldrWindows  
 ShowEncCompFilesColor         # HideEncCompFilesColor
 DisableSharingWizard          # EnableSharingWizard
 HideSelectCheckboxes          # ShowSelectCheckboxes
@@ -191,8 +180,7 @@ HideSyncNotifications           # ShowSyncNotifications  #sync notification form
 HideRecentShortcuts             # ShowRecentShortcuts
 SetExplorerThisPC               # SetExplorerQuickAccess
 HideQuickAccess                 # ShowQuickAccess
-# HideRecycleBinFromDesktop     
-ShowRecycleBinOnDesktop
+ShowRecycleBinOnDesktop         # HideRecycleBinFromDesktop   
 ShowThisPCOnDesktop             # HideThisPCFromDesktop
 # ShowUserFolderOnDesktop       # HideUserFolderFromDesktop
 # ShowControlPanelOnDesktop     # HideControlPanelFromDesktop
@@ -211,7 +199,7 @@ ShowThisPCOnDesktop             # HideThisPCFromDesktop
 # HidePicturesFromExplorer      # ShowPicturesInExplorer
 # HideVideosFromThisPC            # ShowVideosInThisPC
 # HideVideosFromExplorer        # ShowVideosInExplorer
-Hide3DObjectsFromThisPC         # Show3DObjectsInThisPC
+# Hide3DObjectsFromThisPC         # Show3DObjectsInThisPC
 # Hide3DObjectsFromExplorer     # Show3DObjectsInExplorer
 # HideNetworkFromExplorer       # ShowNetworkInExplorer
 # HideIncludeInLibraryMenu      # ShowIncludeInLibraryMenu
@@ -252,10 +240,10 @@ DisableMediaSharing             # EnableMediaSharing
 # UninstallSSHClient            # InstallSSHClient
 # InstallSSHServer              # UninstallSSHServer
 InstallTelnetClient           # UninstallTelnetClient
-# InstallNET23                  # UninstallNET23
+InstallNET23                  # UninstallNET23
 SetPhotoViewerAssociation       # UnsetPhotoViewerAssociation
 AddPhotoViewerOpenWith          # RemovePhotoViewerOpenWith
-# UninstallPDFPrinter           # InstallPDFPrinter
+InstallPDFPrinter          # UninstallPDFPrinter
 UninstallXPSPrinter             # InstallXPSPrinter
 RemoveFaxPrinter                # AddFaxPrinter
 # UninstallFaxAndScan           # InstallFaxAndScan
