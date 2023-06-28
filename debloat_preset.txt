@@ -176,7 +176,7 @@ DisableRestoreFldrWindows     # EnableRestoreFldrWindows
 ShowEncCompFilesColor         # HideEncCompFilesColor
 DisableSharingWizard          # EnableSharingWizard
 HideSelectCheckboxes          # ShowSelectCheckboxes
-HideSyncNotifications           # ShowSyncNotifications  #sync notification form onedrive are not required in lab Pcs
+ShowSyncNotifications          # HideSyncNotifications   #sync notification form onedrive are not required in lab Pcs
 HideRecentShortcuts             # ShowRecentShortcuts
 SetExplorerThisPC               # SetExplorerQuickAccess
 HideQuickAccess                 # ShowQuickAccess
