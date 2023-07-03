@@ -38,7 +38,7 @@ $setting = @(
 #Apply google chrome policy settings
 "googlechrome-policy"
 #Dont display last username on logon
-dontdisplaylastusername-on-logon
+"dontdisplaylastusername-on-logon"
 )
 
 $setting | foreach {
