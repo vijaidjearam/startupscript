@@ -17,7 +17,7 @@ $setting = @(
 #Activer les accès anonymes aux partages samba
 "AllowInsecureGuestAuth" 
 #Désactiver l’arrêt des disques durs, la mise en veille. Pour la veille prolongée/veille hybride, voici comment la désactiver pour gagner quelques gigas :
-#"power_config",
+"power_config",
 #Faire en sorte que la barre des tâches n’affiche que des petites icônes, pas besoin d’avoir des icônes de 48×48 de large : cela occupe l’affichage pour rien
 "Set-TaskbarOptions -Lock -NoAutoHide -Size Small",
 "set-desktop-icon-small",
@@ -37,6 +37,8 @@ $setting = @(
 "pin-to-taskbar",
 #Apply google chrome policy settings
 "googlechrome-policy"
+#Dont display last username on logon
+dontdisplaylastusername-on-logon
 )
 
 $setting | foreach {
