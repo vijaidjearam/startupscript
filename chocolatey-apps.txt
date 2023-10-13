@@ -6,7 +6,7 @@ adobereader --params '"/DesktopIcon /UpdateMode:4"'
 #ccleaner
 dellcommandupdate
 notepadplusplus
-#audacity
+audacity
 #blender
 #scilab
 ffmpeg
@@ -19,7 +19,7 @@ firefox
 #flashplayeractivex
 #flashplayerplugin
 #foxitreader 
-#gimp
+gimp
 git
 googlechrome
 ublockorigin-chrome
@@ -31,6 +31,7 @@ totalcommander
 vlc
 vscode
 office365
+inkscape
 #office2019
 fusion-inventory
 laps-urca
