@@ -39,5 +39,6 @@ laps-urca
 microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
 velociraptor
 zoom
+defprof-urca
 #pdfxchangeeditor
 #xmind
