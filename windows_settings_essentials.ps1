@@ -418,6 +418,34 @@ function open_ports {
 	# Allow ping IPV4
 	netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4 dir=in action=allow
 }
+function Disable_automatic_updates_of_Microsoft_Store_apps {
+	$Name = “AutoDownload” 
+	$Value = 2 
+	$Path = “HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore” 
+	If ((Test-Path $Path) -eq $false){ 
+	New-Item -Path $Path -ItemType Directory 
+	} 
+	If (-!(Get-ItemProperty -Path $Path -Name $name -ErrorAction SilentlyContinue)){ 
+	New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value 
+	} 
+	else{ 
+	Set-ItemProperty -Path $Path -Name $Name -Value $Value 
+	} 
+}
+function Enable_automatic_updates_of_Microsoft_Store_apps {
+	$Name = “AutoDownload” 
+	$Value = 4 
+	$Path = “HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore” 
+	If ((Test-Path $Path) -eq $false){ 
+	New-Item -Path $Path -ItemType Directory 
+	} 
+	If (-!(Get-ItemProperty -Path $Path -Name $name -ErrorAction SilentlyContinue)){ 
+	New-ItemProperty -Path $Path -Name $Name -PropertyType DWord -Value $Value 
+	} 
+	else{ 
+	Set-ItemProperty -Path $Path -Name $Name -Value $Value 
+	} 
+}
 
 function Set-WindowsExplorerOptions {
 <#
