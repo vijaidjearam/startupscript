@@ -23,6 +23,7 @@ $setting = @(
 "set-desktop-icon-small",
 "Enable-RemoteDesktop",
 "open_ports",
+"Disable_automatic_updates_of_Microsoft_Store_apps",
 #Désactiver la protection du système (points de restauration) : nous gagnons alors de l’espace disque. Nous avons une image qui fonctionne désormais, et il n’est pas nécessaire de conserver des points de restauration.
 'Disable-ComputerRestore -Drive "c:\"',
 #point windows wsus server to 10.1.1.1( its a dummy address so windows will get updates anymore)
