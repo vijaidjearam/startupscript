@@ -419,7 +419,7 @@ function open_ports {
 	netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4 dir=in action=allow
 }
 function Disable_automatic_updates_of_Microsoft_Store_apps {
-	$Name = “AutoDownload” 
+	$Name = "AutoDownload" 
 	$Value = 2 
 	$Path = “HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore” 
 	If ((Test-Path $Path) -eq $false){ 
@@ -433,7 +433,7 @@ function Disable_automatic_updates_of_Microsoft_Store_apps {
 	} 
 }
 function Enable_automatic_updates_of_Microsoft_Store_apps {
-	$Name = “AutoDownload” 
+	$Name = "AutoDownload" 
 	$Value = 4 
 	$Path = “HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore” 
 	If ((Test-Path $Path) -eq $false){ 
