@@ -421,7 +421,7 @@ function open_ports {
 function Disable_automatic_updates_of_Microsoft_Store_apps {
 	$Name = "AutoDownload" 
 	$Value = 2 
-	$Path = “HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore” 
+	$Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore" 
 	If ((Test-Path $Path) -eq $false){ 
 	New-Item -Path $Path -ItemType Directory 
 	} 
@@ -435,7 +435,7 @@ function Disable_automatic_updates_of_Microsoft_Store_apps {
 function Enable_automatic_updates_of_Microsoft_Store_apps {
 	$Name = "AutoDownload" 
 	$Value = 4 
-	$Path = “HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore” 
+	$Path = "HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore"
 	If ((Test-Path $Path) -eq $false){ 
 	New-Item -Path $Path -ItemType Directory 
 	} 
