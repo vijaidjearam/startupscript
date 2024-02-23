@@ -40,6 +40,7 @@ write-host  "AllowInsecureGuestAuth-----Nok" -ForegroundColor Red
 }
 
 New-Item -Path "HKCU:\" -Name osinstall_local
+New-ItemProperty -Path 'HKCU:\osinstall_local' -Name repopath -value $repopath
 $manufacturer = (Get-CimInstance -ClassName win32_computersystem | Select-Object Manufacturer).Manufacturer
 if ($manufacturer -like '*dell*')
 {
