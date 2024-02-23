@@ -7,7 +7,7 @@ Function RequireAdmin {
 }
 $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_chocolatey_transcript.txt"
 Start-Transcript -path $FileName -NoClobber
-$repopath = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name repopath
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\repopath' -Name path
 iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windows_settings_essentials.ps1'))
 $apps = @()
 $PSCommandArgs = @()
