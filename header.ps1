@@ -1,3 +1,4 @@
+#Here in the repo path replace with your repo URL
 $repopath ="https://raw.githubusercontent.com/vijaidjearam/startupscript/master/"
 iex ((New-Object System.Net.WebClient).DownloadString($repopath+"windows_settings_essentials.ps1"))
 $WarningPreference = 'SilentlyContinue'
