@@ -3,4 +3,5 @@ while (!(test-connection 8.8.8.8 -Count 1 -Quiet -ErrorAction SilentlyContinue))
     sleep 5
 }
 write-host "internet connection is up! -> proceeding with the script" -ForegroundColor Green
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name repopath
+iex ((New-Object System.Net.WebClient).DownloadString($repopath+'header.ps1'))
