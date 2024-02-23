@@ -1,4 +1,5 @@
-iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\repopath' -Name path
+iex ((New-Object System.Net.WebClient).DownloadString($repopath+"windows_settings_essentials.ps1"))
 $WarningPreference = 'SilentlyContinue'
 
 # Change the name of the pc to IUT-serialnumber
@@ -52,7 +53,7 @@ New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_ap
 }
 
 $stage = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name stage
-((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/registry_run_once_install_win_with_recovery.ps1')) | Out-File $env:TEMP\header.ps1
+((New-Object System.Net.WebClient).DownloadString($repopath+'registry_run_once_install_win_with_recovery.ps1')) | Out-File $env:TEMP\header.ps1
 Stop-Transcript
 }
 
@@ -63,14 +64,14 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_driverinstall.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'dellcommandupdate_driverinstall.ps1'))
     }
     'dellcommandupdate_applyupdates'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandupdate_applyupdates.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'dellcommandupdate_applyupdates.ps1'))
  
     }
     'dellcommandconfigure'
@@ -78,15 +79,15 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/dellcommandconfigure.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'dellcommandconfigure.ps1'))
     }
     'chocolatey_apps'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         #$FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         #Start-Transcript -path $FileName -NoClobber
-        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey.ps1")) | Out-File $env:TEMP\chocolatey.ps1
-        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/chocolatey-apps.txt"))| Out-File $env:TEMP\chocolatey-apps.txt
+        ((New-Object System.Net.WebClient).DownloadString($repopath+"chocolatey.ps1")) | Out-File $env:TEMP\chocolatey.ps1
+        ((New-Object System.Net.WebClient).DownloadString($repopath+"chocolatey-apps.txt"))| Out-File $env:TEMP\chocolatey-apps.txt
         powershell.exe -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\chocolatey.ps1 -preset $env:TEMP\chocolatey-apps.txt
     }
     'windowsupdate_initiate'
@@ -94,28 +95,28 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_initiate.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windowsupdate_initiate.ps1'))
      }
     'windowsupdate_followup'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windowsupdate_followup.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windowsupdate_followup.ps1'))
     }
     'windows_services'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_services.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windows_services.ps1'))
     }
     'windows_settings'
     {
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windows_settings.ps1'))
    
     }
     'windows_debloat'
@@ -123,9 +124,9 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/win10_debloat.ps1")) | Out-File $env:TEMP\win10_debloat.ps1
-        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/win10_debloat.psm1"))| Out-File $env:TEMP\win10_debloat.psm1
-        ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/debloat_preset.txt"))| Out-File $env:TEMP\debloat_preset.txt
+        ((New-Object System.Net.WebClient).DownloadString($repopath+"win10_debloat.ps1")) | Out-File $env:TEMP\win10_debloat.ps1
+        ((New-Object System.Net.WebClient).DownloadString($repopath+"win10_debloat.psm1"))| Out-File $env:TEMP\win10_debloat.psm1
+        ((New-Object System.Net.WebClient).DownloadString($repopath+"debloat_preset.txt"))| Out-File $env:TEMP\debloat_preset.txt
         powershell.exe -NoProfile -ExecutionPolicy Bypass -File $env:TEMP\win10_debloat.ps1 -include $env:TEMP\win10_debloat.psm1 -preset $env:TEMP\debloat_preset.txt
         write-host "Stage: windows_debloat completed" -ForegroundColor Green
         Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'cleaning'
@@ -138,6 +139,6 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/cleaning_create_recovery_partition.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'cleaning_create_recovery_partition.ps1'))
     }
 }
