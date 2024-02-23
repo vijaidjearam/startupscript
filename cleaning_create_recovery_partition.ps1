@@ -35,6 +35,7 @@ Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
 Write-host "Completed Cleaning Event Log" 
 iex CleanWinSXS
 Remove-Item -Path HKCU:\osinstall_local
+Remove-Item -Path HKCU:\repopath
 #dell command update pops up message in the taskbar if there is new driver updates, inspite of setting it to manual schedule update. 
 #so uninstall dell command update , if required it can be installed anytime using chocolatey.
 choco uninstall dellcommandupdate -y
