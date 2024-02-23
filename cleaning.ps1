@@ -58,7 +58,9 @@ catch
 {
 write-host "Stage: cleaning Failed" -ForegroundColor Red
 Set-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value cleaning
-Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/vijaidjearam/startupscript/master/header.ps1'))"
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name repopath
+$repo = $repopath+'header.ps1'
+Set-Runonce -command "%systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass ; iex ((New-Object System.Net.WebClient).DownloadString($repo))"
 Stop-Transcript
 Pause
 }
