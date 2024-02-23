@@ -8,6 +8,7 @@ if (test-path 'HKCU:\repopath'){
 $repopath = Get-ItemPropertyValue -Path 'HKCU:\repopath' -Name path
 }
 else{
+New-Item -Path "HKCU:\" -Name "repopath"
 New-ItemProperty -Path 'HKCU:\repopath' -Name path -value $repopath
 }
 iex ((New-Object System.Net.WebClient).DownloadString($repopath+'header.ps1'))
