@@ -1,7 +1,8 @@
 $WarningPreference = 'SilentlyContinue'
 try
 {
-iex ((New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/vijaidjearam/startupscript/master/windows_settings_essentials.ps1"))
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name repopath
+iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windows_settings_essentials.ps1'))
 write-host "Entering Windows-settings Configuration Stage" 
 $setting = @(
 "set-ntpserver_urca",
