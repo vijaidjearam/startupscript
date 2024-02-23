@@ -1,7 +1,7 @@
 $WarningPreference = 'SilentlyContinue'
 try
 {
-$repopath = Get-ItemPropertyValue -Path 'HKCU:\osinstall_local' -Name repopath
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\repopath' -Name path
 iex ((New-Object System.Net.WebClient).DownloadString($repopath+'windows_settings_essentials.ps1'))
 write-host "Entering Windows-settings Configuration Stage" 
 $setting = @(
