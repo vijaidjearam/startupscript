@@ -1,3 +1,15 @@
+# Variables that needs to be changed when forking the Repo:
+- Registryrunonce.ps1 -> $repopath = "https://raw.githubusercontent.com/vijaidjearam/startupscript/master/" change the value according to your Repo
+- registry_run_once_install_win_with_recovery.ps1 -> $repopath = "https://raw.githubusercontent.com/vijaidjearam/startupscript/master/" change the value according to your Repo
+- Autounattend-WinEdu.xml -> change the value in the Run synchronous command according to you Repo
+
+  ```
+  				<RunSynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<Path>powershell -NoLogo -Command &quot;(new-object System.Net.WebClient).DownloadFile(&apos;https://raw.githubusercontent.com/vijaidjearam/startupscript/master/registryrunonce.ps1&apos;, &apos;c:\windows\temp\header.ps1&apos;)&quot;</Path>
+				</RunSynchronousCommand>  
+  ```
+-  repeat the same steps for all the Autounattend-xml
 # To create custom windows USB
 - Download windows ISO via media creation tool (make sure you download 64 bit image)
 - Copy provisioning-win-edu or provisioning-win-pro and autounattend.xml(UEFI or MBR) to the root of the usb.
