@@ -1,5 +1,5 @@
 #Here in the repo path replace with your repo URL
-$repopath ="https://raw.githubusercontent.com/vijaidjearam/startupscript/master/"
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\repopath' -Name path
 iex ((New-Object System.Net.WebClient).DownloadString($repopath+"windows_settings_essentials.ps1"))
 $WarningPreference = 'SilentlyContinue'
 
@@ -41,7 +41,6 @@ write-host  "AllowInsecureGuestAuth-----Nok" -ForegroundColor Red
 }
 
 New-Item -Path "HKCU:\" -Name osinstall_local
-New-ItemProperty -Path 'HKCU:\osinstall_local' -Name repopath -value $repopath
 $manufacturer = (Get-CimInstance -ClassName win32_computersystem | Select-Object Manufacturer).Manufacturer
 if ($manufacturer -like '*dell*')
 {
