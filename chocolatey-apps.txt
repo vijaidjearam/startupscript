@@ -5,7 +5,7 @@ adobereader --params '"/DesktopIcon /UpdateMode:4"'
 #adobeshockwaveplayer
 #ccleaner
 dellcommandupdate
-#notepadplusplus
+notepadplusplus
 #audacity
 #blender
 #scilab
@@ -14,11 +14,11 @@ dellcommandupdate
 #lame
 #maxima
 #filezilla
-#firefox
-#ublockorigin-firefox
+firefox
+ublockorigin-firefox
 #flashplayeractivex
 #flashplayerplugin
-#foxitreader 
+foxitreader 
 #gimp
 git
 googlechrome
@@ -30,15 +30,15 @@ sublimetext4
 #totalcommander
 vlc
 vscode
-#office365
+office365
 #inkscape
 #office2019
-#fusion-inventory
-#laps-urca
+fusion-inventory
+laps-urca
 #insight-student-urca
 microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
-#velociraptor
-#zoom
+velociraptor
+zoom
 defprof-urca
 #pdfxchangeeditor
 #xmind
