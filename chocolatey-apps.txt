@@ -20,11 +20,11 @@ ublockorigin-firefox
 #flashplayerplugin
 foxitreader 
 #gimp
-git
+#git
 googlechrome
 ublockorigin-chrome
-#libreoffice-fresh
-#pdfcreator
+libreoffice-fresh
+pdfcreator
 #quicktime
 sublimetext4
 #totalcommander
