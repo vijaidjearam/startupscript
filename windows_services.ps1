@@ -21,7 +21,6 @@ $service_startup_disabled = @(
   "Wlansvc,"
   "Wwansvc", 
   "ehSched", 
-  "bthserv",
   "ehRecvr",
   "Mcx2Svc", 
   "SCPolicySvc",
