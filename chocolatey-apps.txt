@@ -16,8 +16,8 @@ notepadplusplus
 #filezilla
 firefox
 ublockorigin-firefox
-#flashplayeractivex
-#flashplayerplugin
+flashplayeractivex
+flashplayerplugin
 foxitreader 
 #gimp
 #git
