@@ -418,6 +418,49 @@ function open_ports {
 	# Allow ping IPV4
 	netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4 dir=in action=allow
 }
+function Disable_Startup_Boost_Microsoft_Edge_for_All_Users {
+	if (Test-Path 'HKLM:\\SOFTWARE\Policies\Microsoft\Edge')
+	{
+	$Value = Get-ItemProperty -Path 'HKLM:\\SOFTWARE\Policies\Microsoft\Edge' -Name 'StartupBoostEnabled' -ErrorAction SilentlyContinue
+	If ($value) {
+	    # Value exists
+	   Set-ItemProperty -Path "HKLM:\\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled" -Value 0
+	
+	}
+	else {
+	    # Value does not exist
+	   New-ItemProperty -Path "HKLM:\\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled" -Value 0
+	}
+	}
+	else
+	{
+	New-Item -Path HKLM:\\SOFTWARE\Policies\Microsoft\Edge
+	New-ItemProperty -Path HKLM:\\SOFTWARE\Policies\Microsoft\Edge -Name "StartupBoostEnabled" -Value 0
+	
+	}
+}
+function Enable_Startup_Boost_Microsoft_Edge_for_All_Users {
+	if (Test-Path 'HKLM:\\SOFTWARE\Policies\Microsoft\Edge')
+	{
+	$Value = Get-ItemProperty -Path 'HKLM:\\SOFTWARE\Policies\Microsoft\Edge' -Name 'StartupBoostEnabled' -ErrorAction SilentlyContinue
+	If ($value) {
+	    # Value exists
+	   Set-ItemProperty -Path "HKLM:\\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled" -Value 1
+	
+	}
+	else {
+	    # Value does not exist
+	   New-ItemProperty -Path "HKLM:\\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled" -Value 1
+	}
+	}
+	else
+	{
+	New-Item -Path HKLM:\\SOFTWARE\Policies\Microsoft\Edge
+	New-ItemProperty -Path HKLM:\\SOFTWARE\Policies\Microsoft\Edge -Name "StartupBoostEnabled" -Value 1
+	
+	}
+}
+
 function Disable_automatic_updates_of_Microsoft_Store_apps {
 	$Name = "AutoDownload" 
 	$Value = 2 
