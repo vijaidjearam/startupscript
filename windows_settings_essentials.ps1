@@ -676,6 +676,7 @@ $temp =@(
 "ProgramDataUpdater",
 "Microsoft-Windows-DiskDiagnosticDataCollector",
 "Microsoft-Windows-DiskDiagnosticResolver",
+"BrightnessReset",
 "Scheduled Start"
 )
 
