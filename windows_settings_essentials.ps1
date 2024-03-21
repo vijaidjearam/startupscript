@@ -460,6 +460,81 @@ function Enable_Startup_Boost_Microsoft_Edge_for_All_Users {
 	
 	}
 }
+# The active setup components are installed for every new user and it consumes lot of startup time refer [url](https://www.itninja.com/blog/view/active-setup-concept)
+# This disables startup of microsoft edge and google chrome for every new user logging in (The following items has been disable after windows performance analysis) 
+function active-setup-components{
+$sourcePath = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components"
+$destinationPath = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed-component-backup"
+if (Test-Path $destinationPath)
+{
+write-host "The BackupPath exists" -ForegroundColor Green
+}
+else
+{
+write-host "The BackupPath doesnt exists: so going ahead to create it" -ForegroundColor Green
+New-Item -Path $destinationPath -force
+} 
+
+# Define source and destination registry paths
+
+# Function to recursively move registry keys
+function Move-RegistryKey {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$sourceKeyPath,
+
+        [Parameter(Mandatory=$true)]
+        [string]$destinationKeyPath
+    )
+
+    # Move the key to the destination path
+    Move-Item -Path $sourceKeyPath -Destination $destinationKeyPath -Force
+}
+
+# Function to check if the "localized name" key value is "Microsoft Edge"
+function Is-MicrosoftEdge {
+    param (
+        [Parameter(Mandatory=$true)]
+        [Microsoft.Win32.RegistryKey]$key
+    )
+
+    $value = $key.GetValue("Localized Name")
+    return ($value -eq "Microsoft Edge")
+}
+function Is-GoogleChrome {
+    param (
+        [Parameter(Mandatory=$true)]
+        [Microsoft.Win32.RegistryKey]$key
+    )
+
+    $value = $key.GetValue("Localized Name")
+    return ($value -eq "Google Chrome")
+}
+
+# Iterate through registry keys in the source branch
+Get-ChildItem -Path $sourcePath | ForEach-Object {
+    $sourceKey = $_
+
+    # Check if the "Localized Name" value is "Microsoft Edge"
+    if (Is-MicrosoftEdge -key $sourceKey) {
+        # Move the key to the destination branch
+        $destinationKeyPath = Join-Path -Path $destinationPath -ChildPath $sourceKey.Name
+        Move-RegistryKey -sourceKeyPath $sourceKey.PSPath -destinationKeyPath $destinationPath
+        Write-Output "Registry key moved: $($sourceKey.PSPath) -> $destinationKeyPath"
+    }
+}
+Get-ChildItem -Path $sourcePath | ForEach-Object {
+    $sourceKey = $_
+
+    # Check if the "Localized Name" value is "Microsoft Edge"
+    if (Is-GoogleChrome -key $sourceKey) {
+        # Move the key to the destination branch
+        $destinationKeyPath = Join-Path -Path $destinationPath -ChildPath $sourceKey.Name
+        Move-RegistryKey -sourceKeyPath $sourceKey.PSPath -destinationKeyPath $destinationPath
+        Write-Output "Registry key moved: $($sourceKey.PSPath) -> $destinationKeyPath"
+    }
+}
+}
 
 function Disable_automatic_updates_of_Microsoft_Store_apps {
 	$Name = "AutoDownload" 
