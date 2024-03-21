@@ -462,7 +462,7 @@ function Enable_Startup_Boost_Microsoft_Edge_for_All_Users {
 }
 # The active setup components are installed for every new user and it consumes lot of startup time refer [url](https://www.itninja.com/blog/view/active-setup-concept)
 # This disables startup of microsoft edge and google chrome for every new user logging in (The following items has been disable after windows performance analysis) 
-function active-setup-components{
+function active_setup_components{
 $sourcePath = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components"
 $destinationPath = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed-component-backup"
 if (Test-Path $destinationPath)
