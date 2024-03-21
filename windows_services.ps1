@@ -24,6 +24,15 @@ $service_startup_disabled = @(
   "ehRecvr",
   "Mcx2Svc", 
   "SCPolicySvc",
+  "gupdate",
+  "gupdatem",
+  "edgeupdate",
+  "edgeupdatem",
+  "MicrosoftEdgeElevationService",
+  "MessagingService_ab44f",
+  "GoogleChromeElevationService",
+  "AMD Crash Defender Service",
+  "AMD External Events Utility",
   "Themes"
 )
 $service_startup_delayed_auto = @(
