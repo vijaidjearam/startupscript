@@ -16,7 +16,7 @@ $setting = @(
 "Set-WindowsExplorerOptions -DisableShowFrequentFoldersInQuickAccess",
 "Set-WindowsExplorerOptions -EnableSnapAssist",
 #Activer les accès anonymes aux partages samba
-"AllowInsecureGuestAuth" 
+"AllowInsecureGuestAuth",
 #Désactiver l’arrêt des disques durs, la mise en veille. Pour la veille prolongée/veille hybride, voici comment la désactiver pour gagner quelques gigas :
 "power_config",
 #Faire en sorte que la barre des tâches n’affiche que des petites icônes, pas besoin d’avoir des icônes de 48×48 de large : cela occupe l’affichage pour rien
@@ -27,6 +27,7 @@ $setting = @(
 "Disable_automatic_updates_of_Microsoft_Store_apps",
 "Disable_Startup_Boost_Microsoft_Edge_for_All_Users",
 "active_setup_components",
+"enable_ntfx3",
 #Désactiver la protection du système (points de restauration) : nous gagnons alors de l’espace disque. Nous avons une image qui fonctionne désormais, et il n’est pas nécessaire de conserver des points de restauration.
 'Disable-ComputerRestore -Drive "c:\"',
 #point windows wsus server to 10.1.1.1( its a dummy address so windows will get updates anymore)
@@ -40,7 +41,7 @@ $setting = @(
 #pin office apps shortcut to taskbar
 "pin-to-taskbar",
 #Apply google chrome policy settings
-"googlechrome-policy"
+"googlechrome-policy",
 #Dont display last username on logon
 "dontdisplaylastusername-on-logon"
 )
