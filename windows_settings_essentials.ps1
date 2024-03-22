@@ -565,6 +565,9 @@ function Enable_automatic_updates_of_Microsoft_Store_apps {
 	Set-ItemProperty -Path $Path -Name $Name -Value $Value 
 	} 
 }
+function enable_ntfx3{
+Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
+}
 
 function Set-WindowsExplorerOptions {
 <#
