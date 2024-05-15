@@ -96,7 +96,7 @@ $biossetting=@(
 "WdtOsBootProtection=Disabled",
 "WirelessLan=Enabled"
 )
-choco install dell-command-configure -y
+choco install dellcommandconfigure -y
 foreach($item in $biossetting){
 & "C:\Program Files (x86)\Dell\Command Configure\X86_64\cctk.exe" --$item | Out-Null
 if($LASTEXITCODE -eq 0)
