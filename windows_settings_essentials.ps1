@@ -711,7 +711,15 @@ function power_config{
 	#powercfg.exe -x -hibernate-timeout-dc 0 # Battery device
 	powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on plugged in device
 	#powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0 #Disable Disable Require a password on wakeup on battery device
-	powercfg.exe -h off
+ 	# The follwing command sets the value of the powerbutton to shutdown	
+	#  Here are the available values you can use with their respective action:
+	#    0 -- Do nothing. 
+	#    1 -- Sleep. 
+	#    2 -- Hibernate. 
+	#    3 -- Shut down. 
+	#    4 -- Turn off the display. 
+  	powercfg -setacvalueindex SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
+   	powercfg.exe -h off
 }
 
 function Set-Wsus{
