@@ -30,16 +30,16 @@ sublimetext4
 totalcommander
 vlc
 vscode
-office365
+#office365
 #inkscape
-#office2019
+office2019
 fusion-inventory
 laps-urca
 insight-student-urca
-microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
+#microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
 velociraptor
 zoom
 defprof-urca
 #pdfxchangeeditor
 #xmind
-cisco-anyconnect-sbl
+#cisco-anyconnect-sbl
