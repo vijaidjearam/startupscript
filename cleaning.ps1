@@ -41,7 +41,7 @@ Remove-Item -Path HKCU:\repopath
 choco uninstall dellcommandupdate -y
 #installing kaspersky at the end so that it doesnt block the script at the start up
 #choco install f-secure -y
-choco install f-secure-autonome -y
+#choco install f-secure-autonome -y
 choco source remove -n=chocolatey
 # iex dontdisplaylastusername-on-logon
 iex disableautosignin-info
