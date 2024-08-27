@@ -47,7 +47,9 @@ $setting = @(
 # Disable Google Chrome Turn on ad privacy feature, source: https://github.com/letsdoautomation/powershell
 "DisableGoogleChromeTurnOnAdPrivacyFeature",
 #Disable Microsoft Edge first run wizard
-"DisableMicrosoftEdgeFirstRunWizard"
+"DisableMicrosoftEdgeFirstRunWizard",
+# Change default Google Chrome search provider
+"ChangeDefaultGoogleChromeSearchProvider"
 )
 
 $setting | foreach {
