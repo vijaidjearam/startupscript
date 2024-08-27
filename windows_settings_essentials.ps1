@@ -808,40 +808,6 @@ New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 function dontdisplaynewsaninterestsintaskbar{
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds' -Name ShellFeedsTaskbarViewMode -Value 2 -Force
 }
-function DisableGoogleChromeTurnOnAdPrivacyFeature{
-$settings = 
-[PSCustomObject]@{
-    Path  = "SOFTWARE\Policies\Google\Chrome"
-    Value = 0
-    Name  = "PrivacySandboxPromptEnabled" # notification
-},
-[PSCustomObject]@{ 
-    Path  = "SOFTWARE\Policies\Google\Chrome"
-    Value = 0
-    Name  = "PrivacySandboxAdMeasurementEnabled"
-},
-[PSCustomObject]@{ 
-    Path  = "SOFTWARE\Policies\Google\Chrome"
-    Value = 0
-    Name  = "PrivacySandboxAdTopicsEnabled"
-},
-[PSCustomObject]@{ 
-    Path  = "SOFTWARE\Policies\Google\Chrome"
-    Value = 0
-    Name  = "PrivacySandboxSiteEnabledAdsEnabled"
-} | group Path
-
-foreach($setting in $settings){
-    $registry = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey($setting.Name, $true)
-    if ($null -eq $registry) {
-        $registry = [Microsoft.Win32.Registry]::LocalMachine.CreateSubKey($setting.Name, $true)
-    }
-    $setting.Group | %{
-        $registry.SetValue($_.name, $_.value)
-    }
-    $registry.Dispose()
-}
-}
 function DisableMicrosoftEdgeFirstRunWizard{
 $settings = 
 [PSCustomObject]@{
@@ -898,5 +864,63 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "HomepageLoc
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "RestoreOnStartup" -Value 4 -Force
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs -Name 1 -Value https://www.iut-troyes.univ-reims.fr/ -Force
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome\ -Name "DefaultBrowserSettingEnabled" -Value 0 -Force
+}
+function DisableGoogleChromeTurnOnAdPrivacyFeature{
+$settings = 
+[PSCustomObject]@{
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxPromptEnabled" # notification
+},
+[PSCustomObject]@{ 
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxAdMeasurementEnabled"
+},
+[PSCustomObject]@{ 
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxAdTopicsEnabled"
+},
+[PSCustomObject]@{ 
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxSiteEnabledAdsEnabled"
+} | group Path
+
+foreach($setting in $settings){
+    $registry = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey($setting.Name, $true)
+    if ($null -eq $registry) {
+        $registry = [Microsoft.Win32.Registry]::LocalMachine.CreateSubKey($setting.Name, $true)
+    }
+    $setting.Group | %{
+        $registry.SetValue($_.name, $_.value)
+    }
+    $registry.Dispose()
+}
+}
+function ChangeDefaultGoogleChromeSearchProvider{
+$settings = 
+[PSCustomObject]@{ # Enable default search providers
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 1
+    Name  = "DefaultSearchProviderEnabled"
+},
+[PSCustomObject]@{ # Set search provider url
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = "https://www.google.com/search?q={searchTerms}"
+    Name  = "DefaultSearchProviderSearchURL"
+} | group Path
+
+foreach($setting in $settings){
+    $registry = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey($setting.Name, $true)
+    if ($null -eq $registry) {
+        $registry = [Microsoft.Win32.Registry]::LocalMachine.CreateSubKey($setting.Name, $true)
+    }
+    $setting.Group | %{
+        $registry.SetValue($_.name, $_.value)
+    }
+    $registry.Dispose()
+}
 }
 
