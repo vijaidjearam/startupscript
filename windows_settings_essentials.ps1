@@ -808,6 +808,60 @@ New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 function dontdisplaynewsaninterestsintaskbar{
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds' -Name ShellFeedsTaskbarViewMode -Value 2 -Force
 }
+function DisableGoogleChromeTurnOnAdPrivacyFeature{
+$settings = 
+[PSCustomObject]@{
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxPromptEnabled" # notification
+},
+[PSCustomObject]@{ 
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxAdMeasurementEnabled"
+},
+[PSCustomObject]@{ 
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxAdTopicsEnabled"
+},
+[PSCustomObject]@{ 
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "PrivacySandboxSiteEnabledAdsEnabled"
+} | group Path
+
+foreach($setting in $settings){
+    $registry = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey($setting.Name, $true)
+    if ($null -eq $registry) {
+        $registry = [Microsoft.Win32.Registry]::LocalMachine.CreateSubKey($setting.Name, $true)
+    }
+    $setting.Group | %{
+        $registry.SetValue($_.name, $_.value)
+    }
+    $registry.Dispose()
+}
+}
+function DisableMicrosoftEdgeFirstRunWizard{
+$settings = 
+[PSCustomObject]@{
+    Path  = "SOFTWARE\Policies\Microsoft\Edge"
+    Value = 1
+    Name  = "HideFirstRunExperience"
+} | group Path
+
+foreach($setting in $settings){
+    $registry = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey($setting.Name, $true)
+    if ($null -eq $registry) {
+        $registry = [Microsoft.Win32.Registry]::LocalMachine.CreateSubKey($setting.Name, $true)
+    }
+    $setting.Group | %{
+        $registry.SetValue($_.name, $_.value)
+    }
+    $registry.Dispose()
+}
+}
+
 function googlechrome-policy{
 New-Item -ItemType Directory -Force -Path $env:TEMP\Scripts\GPO\
 $WebClient = New-Object System.Net.WebClient
