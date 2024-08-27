@@ -33,15 +33,15 @@ vscode
 #office365
 #inkscape
 office2019
-projectpro2019
-visiopro2019
-fusion-inventory
-laps-urca
+#projectpro2019
+#visiopro2019
+#fusion-inventory
+#laps-urca
 #insight-student-urca
 #microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
-velociraptor
+#velociraptor
 zoom
 defprof-urca
 #pdfxchangeeditor
 #xmind
-#cisco-anyconnect-sbl
+cisco-anyconnect-sbl
