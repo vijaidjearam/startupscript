@@ -1,4 +1,5 @@
 choco install dellcommandupdate -y
+& "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /configure -advancedDriverRestore=enable
 & "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall
 if($LASTEXITCODE -eq 0 -or $LASTEXITCODE -eq 1 -or $LASTEXITCODE -eq 5 -or $LASTEXITCODE -eq 500)
 {
