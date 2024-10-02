@@ -46,9 +46,14 @@ if ($manufacturer -like '*dell*')
 write-host "System manufacturer has been detected as Dell - so proceeding with Dell driver update" -ForegroundColor Green
 New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandupdate_driverinstall'
 }
+elseif ($manufacturer -like '*hp*')
+{
+write-host "System manufacturer has been detected as Dell - so proceeding with Dell driver update" -ForegroundColor Green
+New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'Hpia_driverinstall'
+}
 else
 {
-write-host "System manufacturer is not Dell - so proceeding with installing Chocolatey Apps" -ForegroundColor Green
+write-host "System manufacturer is not Dell or HP - so proceeding with installing Chocolatey Apps" -ForegroundColor Green
 New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'chocolatey_apps'
 }
 
@@ -80,6 +85,13 @@ Switch ($stage)
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
         iex ((New-Object System.Net.WebClient).DownloadString($repopath+'dellcommandconfigure.ps1'))
+    }
+    'Hpia_driverinstall'
+    {
+        write-host "Entering Stage: $stage" -ForegroundColor Green
+        $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
+        Start-Transcript -path $FileName -NoClobber
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'Hpia_driverinstall.ps1'))
     }
     'chocolatey_apps'
     {
