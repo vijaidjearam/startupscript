@@ -13,7 +13,7 @@ while (-not $resolved) {
         Start-Sleep -Seconds 5  # Wait for 5 seconds before trying again
     }
 }
-choco install hpia -y
+choco install dotnet hpia -y
 if($LASTEXITCODE -eq 0 -or $LASTEXITCODE -eq 1 -or $LASTEXITCODE -eq 5 -or $LASTEXITCODE -eq 500)
 {
 write-host "Stage: HP Image Assist installation completed" -ForegroundColor Green
