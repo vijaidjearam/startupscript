@@ -1,4 +1,4 @@
-start-process -FilePath c:\hp\hpia\Hpimageassistant.exe -ArgumentList "/auto /Noninteractive /AutoCleanup /AutoReport" -wait
+start-process -FilePath c:\hp\hpia\Hpimageassistant.exe -ArgumentList "/auto /Noninteractive /AutoCleanup" -wait
 
 if($LASTEXITCODE -eq 0 -or $LASTEXITCODE -eq 1 -or $LASTEXITCODE -eq 5 -or $LASTEXITCODE -eq 500)
 {
