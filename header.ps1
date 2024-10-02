@@ -49,7 +49,7 @@ New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'dellcommandup
 elseif ($manufacturer -like '*hp*')
 {
 write-host "System manufacturer has been detected as HP - so proceeding with Dell driver update" -ForegroundColor Green
-New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'Hpia_driverinstall'
+New-ItemProperty -Path 'HKCU:\osinstall_local' -Name stage -value 'Hpia_install'
 }
 else
 {
@@ -85,6 +85,13 @@ Switch ($stage)
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
         iex ((New-Object System.Net.WebClient).DownloadString($repopath+'dellcommandconfigure.ps1'))
+    }
+    'hpia_install'
+    {
+        write-host "Entering Stage: $stage" -ForegroundColor Green
+        $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
+        Start-Transcript -path $FileName -NoClobber
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'Hpia_install.ps1'))
     }
     'Hpia_driverinstall'
     {
