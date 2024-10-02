@@ -1,5 +1,5 @@
 choco install hpia -y
-start-process -FilePath c:\hp\hpia\Hpimageassistant.exe -ArgumentList "/auto /Silent" -wait
+start-process -FilePath c:\hp\hpia\Hpimageassistant.exe -ArgumentList "/auto /Noninteractive" -wait
 if($LASTEXITCODE -eq 0 -or $LASTEXITCODE -eq 1 -or $LASTEXITCODE -eq 5 -or $LASTEXITCODE -eq 500)
 {
 write-host "Stage: dellcommandupdate_driverinstall completed" -ForegroundColor Green
