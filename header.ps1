@@ -91,7 +91,7 @@ Switch ($stage)
         write-host "Entering Stage: $stage" -ForegroundColor Green
         $FileName = $env:TEMP+"\"+(Get-Date).tostring("dd-MM-yyyy-hh-mm-ss")+"_"+ $stage+"_transcript.txt"
         Start-Transcript -path $FileName -NoClobber
-        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'Hpia_install.ps1'))
+        iex ((New-Object System.Net.WebClient).DownloadString($repopath+'hpia_install.ps1'))
     }
     'Hpia_driverinstall'
     {
