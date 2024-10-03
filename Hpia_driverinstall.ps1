@@ -1,6 +1,6 @@
 $proc = (start-process -FilePath c:\hp\hpia\Hpimageassistant.exe -ArgumentList "/auto /Noninteractive /AutoCleanup" -wait -PassThru)
 write-host "Lastexitcode : $proc.ExitCode"
-
+# https://ftp.hp.com/pub/caps-softpaq/cmit/whitepapers/HPIAUserGuide.pdf
 if($proc.ExitCode -eq 0 -or $proc.ExitCode -eq 256 -or $proc.ExitCode -eq 257 -or $proc.ExitCode -eq 3010)
 {
 write-host "Stage: HP Image Assist -Driver Install completed" -ForegroundColor Green
