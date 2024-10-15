@@ -23,14 +23,14 @@ firefox
 #git
 googlechrome
 ublockorigin-chrome
-#libreoffice-fresh
+libreoffice-fresh
 #pdfcreator
 #quicktime
 sublimetext4
 #totalcommander
-#vlc
+vlc
 vscode
-#office365
+office365
 #inkscape
 #office2019
 #projectpro2019
@@ -39,9 +39,9 @@ vscode
 laps-urca
 #insight-student-urca
 #microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
-#velociraptor
-#zoom
+velociraptor
+zoom
 defprof-urca
 #pdfxchangeeditor
 #xmind
-#cisco-anyconnect-sbl
+cisco-anyconnect-sbl
