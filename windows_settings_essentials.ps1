@@ -923,4 +923,17 @@ foreach($setting in $settings){
     $registry.Dispose()
 }
 }
+function set-file_associations{
+# PowerShell script to add a registry key for DefaultAssociationsConfiguration
+
+$regPath = "HKLM\SOFTWARE\Policies\Microsoft\Windows\System"
+$regName = "DefaultAssociationsConfiguration"
+$regType = "REG_SZ"
+$regValue = "C:\file_associations.xml"
+
+# Add the registry key
+New-Item -Path $regPath -Force | Out-Null
+New-ItemProperty -Path $regPath -Name $regName -PropertyType $regType -Value $regValue -Force
+}
+
 
