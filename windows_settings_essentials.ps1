@@ -935,9 +935,9 @@ Invoke-WebRequest -Uri $sourceUrl -OutFile $destinationPath
 
 # Confirm the file was downloaded
 if (Test-Path $destinationPath) {
-    Write-Output "file_associations.xml downloaded successfully to C:\"
+    Write-host "file_associations.xml downloaded successfully to C:\"
 } else {
-    Write-Output "Failed to download file_associations.xml."
+    Write-host "Failed to download file_associations.xml."
 }
 
 # PowerShell script to add a registry key for DefaultAssociationsConfiguration
