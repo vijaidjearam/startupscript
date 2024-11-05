@@ -924,6 +924,22 @@ foreach($setting in $settings){
 }
 }
 function set-file_associations{
+
+# Define the URL of the file on GitHub and the destination path
+$repopath = Get-ItemPropertyValue -Path 'HKCU:\repopath' -Name path
+$sourceUrl = $repopath+'file_associations.xml'
+$destinationPath = "C:\file_associations.xml"
+
+# Download the file and save it to the specified location
+Invoke-WebRequest -Uri $sourceUrl -OutFile $destinationPath
+
+# Confirm the file was downloaded
+if (Test-Path $destinationPath) {
+    Write-Output "file_associations.xml downloaded successfully to C:\"
+} else {
+    Write-Output "Failed to download file_associations.xml."
+}
+
 # PowerShell script to add a registry key for DefaultAssociationsConfiguration
 
 $regPath = "HKLM\SOFTWARE\Policies\Microsoft\Windows\System"
