@@ -818,8 +818,29 @@ syspin "C:\Program Files\Google\Chrome\Application\chrome.exe" c:5386
 function dontdisplaylastusername-on-logon{
 New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name dontdisplaylastusername -Value 1 -Force
 }
-function dontdisplaynewsaninterestsintaskbar{
-Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds' -Name ShellFeedsTaskbarViewMode -Value 2 -Force
+function dontdisplaynewsaninterestsintaskbar {
+    # Path to the registry key and properties
+    $regPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds'
+    $regName = 'ShellFeedsTaskbarViewMode'
+    $regValue = 2
+
+    # Check if the registry key exists
+    if (!(Test-Path -Path $regPath)) {
+        Write-Host "Registry path not found: $regPath" -ForegroundColor Yellow
+        return
+    }
+
+    # Take ownership of the key temporarily
+    try {
+        Write-Host "Attempting to set ShellFeedsTaskbarViewMode..."
+        
+        # Set the registry property
+        Set-ItemProperty -Path $regPath -Name $regName -Value $regValue -Force
+
+        Write-Host "Successfully set ShellFeedsTaskbarViewMode to $regValue" -ForegroundColor Green
+    } catch {
+        Write-Host "Failed to set ShellFeedsTaskbarViewMode. You may need to run PowerShell as Administrator." -ForegroundColor Red
+    }
 }
 function DisableMicrosoftEdgeFirstRunWizard{
 $settings = 
