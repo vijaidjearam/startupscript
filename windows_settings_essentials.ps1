@@ -765,6 +765,7 @@ $temp =@(
 "Microsoft-Windows-DiskDiagnosticResolver",
 "BrightnessReset",
 "Adobe Acrobat Update Task",
+"npcapwatchdog",
 "Scheduled Start"
 )
 
