@@ -749,31 +749,42 @@ New-ItemProperty -Path HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\A
 }
 
 #Dans les tâches planifiées, il y a des tâches qui ne servent à rien : HP Support Assistant, par exemple, vu que nous le lancerons manuellement, ainsi que la tâche de défragmentation, mises à jour Google, ou encore l’OfficeTelemetryAgent (mouchard d’Office). Donc effacer/désactiver celles qui ne servent à rien 
-function disable-scheduledtasks{
-write-host "Disabling Scheduled task-----------------------------------"
-$temp =@(
-"*google*",
-"*MicrosoftEdgeupdate*",
-"*Nvidia*",
-"*Ccleaner*",
-"*OfficeTelemetryAgent*",
-"consolidator",
-"UsbCeip",
-"Microsoft Compatibility Appraiser",
-"ProgramDataUpdater",
-"Microsoft-Windows-DiskDiagnosticDataCollector",
-"Microsoft-Windows-DiskDiagnosticResolver",
-"BrightnessReset",
-"Adobe Acrobat Update Task",
-"npcapwatchdog",
-"Scheduled Start"
-)
+function disable-scheduledtasks {
+    Write-Host "Disabling Scheduled tasks-----------------------------------"
+    $temp = @(
+        "*google*",
+        "*MicrosoftEdgeupdate*",
+        "*Nvidia*",
+        "*Ccleaner*",
+        "*OfficeTelemetryAgent*",
+        "consolidator",
+        "UsbCeip",
+        "Microsoft Compatibility Appraiser",
+        "ProgramDataUpdater",
+        "Microsoft-Windows-DiskDiagnosticDataCollector",
+        "Microsoft-Windows-DiskDiagnosticResolver",
+        "BrightnessReset",
+        "Adobe Acrobat Update Task",
+        "npcapwatchdog",
+        "Scheduled Start"
+    )
 
-$temp | foreach {
-Get-ScheduledTask -TaskName $_ | Disable-ScheduledTask | Out-Null
-if($?){write-host $_ "--------------ok" -ForegroundColor Green}
-else{write-host $_ "---------------------NOK" -ForegroundColor Red}
-}
+    $temp | ForEach-Object {
+        $tasks = Get-ScheduledTask -TaskName $_ -ErrorAction SilentlyContinue
+        if ($tasks) {
+            # If multiple tasks are returned, handle each one individually
+            foreach ($task in $tasks) {
+                Disable-ScheduledTask -InputObject $task -ErrorAction SilentlyContinue | Out-Null
+                if ($?) {
+                    Write-Host "$($task.TaskName) -------------- OK" -ForegroundColor Green
+                } else {
+                    Write-Host "$($task.TaskName) --------------------- NOK" -ForegroundColor Red
+                }
+            }
+        } else {
+            Write-Host "$_ not found --------------------- NOK" -ForegroundColor Yellow
+        }
+    }
 }
 #A titre d’exemple de simplification de la UI, aller dans les paramètres avancés,sélectionner « Ajuster pour obtenir les meilleures performances pour lesprogrammes » et cochez dans la liste dessous « Afficher des miniatures au lieu d’icônes », ainsi que « Lisser les polices d’écran ».
 function performance_options_visual_effects{
