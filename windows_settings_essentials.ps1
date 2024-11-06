@@ -942,17 +942,22 @@ if (Test-Path $destinationPath) {
     Write-host "Failed to download file_associations.xml."
 }
 
-# PowerShell script to add a registry key for DefaultAssociationsConfiguration
+# PowerShell script to add a registry key for DefaultFileAssociationsConfiguration
 
-$regPath = "HKLM\SOFTWARE\Policies\Microsoft\Windows\System"
+$regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
 $regName = "DefaultAssociationsConfiguration"
-#$regType = "REG_SZ"
+$regType = "String"  # This is equivalent to "REG_SZ"
 $regValue = "C:\file_associations.xml"
 
-# Add the registry key
-New-Item -Path $regPath -Force | Out-Null
-#New-ItemProperty -Path $regPath -Name $regName -PropertyType $regType -Value $regValue -Force
-New-ItemProperty -Path $regPath -Name $regName -Value $regValue -Force
+# Check if the registry path exists; if not, create it
+if (!(Test-Path -Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+}
+
+# Set the registry value with the specified type
+New-ItemProperty -Path $regPath -Name $regName -PropertyType $regType -Value $regValue -Force | Out-Null
+
+Write-host "Registry key for DefaultFileAssociationsConfiguration was set successfully."
 }
 
 
