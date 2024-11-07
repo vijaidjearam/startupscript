@@ -27,17 +27,14 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlo
 #Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name DefaultPassword -Force
 }
 function clear-eventlogs{
-# PowerShell Script to Clear All Event Logs
-Get-EventLog -LogName * | ForEach-Object { Clear-EventLog -LogName $_.Log }
-Write-Host "All event logs have been cleared successfully."
+Write-host "Cleaning Event Log" 
+Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
+Write-host "Completed Cleaning Event Log" 
 }
 
 try
 {
 if (test-path C:\Windows\Setup\Scripts\SetupComplete.cmd){Remove-Item 'C:\Windows\Setup\Scripts\SetupComplete.cmd'}
-Write-host "Cleaning Event Log" 
-Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
-Write-host "Completed Cleaning Event Log" 
 iex CleanWinSXS
 Remove-Item -Path HKCU:\osinstall_local
 Remove-Item -Path HKCU:\repopath
