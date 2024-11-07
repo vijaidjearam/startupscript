@@ -26,6 +26,11 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlo
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonSID -Value 0 -Force
 #Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name DefaultPassword -Force
 }
+function clear-eventlogs{
+# PowerShell Script to Clear All Event Logs
+Get-EventLog -LogName * | ForEach-Object { Clear-EventLog -LogName $_.Log }
+Write-Host "All event logs have been cleared successfully."
+}
 
 try
 {
@@ -49,9 +54,10 @@ iex disable-autologon
 # Reset Administrator password to Blank
 Set-LocalUser -name Administrateur -Password ([securestring]::new())
 Stop-Transcript
-Write-host "The Next step is going to clear Temp File, check the log file for any error message and then continue: "
+Write-host "The Next step is going to clear Temp File and eventlogs, check the log file for any error message and then continue: "
 Pause
 iex DeleteTempFiles
+iex cleart-eventlogs
 write-host "Stage: cleaning completed" -ForegroundColor Green
 
 }
