@@ -819,28 +819,21 @@ function dontdisplaylastusername-on-logon{
 New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name dontdisplaylastusername -Value 1 -Force
 }
 function dontdisplaynewsaninterestsintaskbar {
-    # Path to the registry key and properties
-    $regPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds'
-    $regName = 'ShellFeedsTaskbarViewMode'
-    $regValue = 2
+# Define the registry path and key
+$registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"
+$registryName = "EnableFeeds"
+$registryValue = 0
 
-    # Check if the registry key exists
-    if (!(Test-Path -Path $regPath)) {
-        Write-Host "Registry path not found: $regPath" -ForegroundColor Yellow
-        return
-    }
+# Check if the registry path exists, create it if not
+if (!(Test-Path $registryPath)) {
+    New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name "Windows Feeds" -Force | Out-Null
+}
 
-    # Take ownership of the key temporarily
-    try {
-        Write-Host "Attempting to set ShellFeedsTaskbarViewMode..."
-        
-        # Set the registry property
-        Set-ItemProperty -Path $regPath -Name $regName -Value $regValue -Force
+# Set the registry value to disable News and Interests
+Set-ItemProperty -Path $registryPath -Name $registryName -Value $registryValue -Type DWord
 
-        Write-Host "Successfully set ShellFeedsTaskbarViewMode to $regValue" -ForegroundColor Green
-    } catch {
-        Write-Host "Failed to set ShellFeedsTaskbarViewMode. You may need to run PowerShell as Administrator." -ForegroundColor Red
-    }
+# Inform the user that the change requires a restart to take effect
+Write-host "News and Interests has been removed from the Taskbar. A restart or logoff may be required for the changes to take effect."
 }
 function DisableMicrosoftEdgeFirstRunWizard{
 $settings = 
