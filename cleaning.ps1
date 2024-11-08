@@ -54,7 +54,7 @@ Stop-Transcript
 Write-host "The Next step is going to clear Temp File and eventlogs, check the log file for any error message and then continue: "
 Pause
 iex DeleteTempFiles
-iex cleart-eventlogs
+iex clear-eventlogs
 write-host "Stage: cleaning completed" -ForegroundColor Green
 
 }
