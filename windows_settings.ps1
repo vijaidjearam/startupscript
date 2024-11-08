@@ -49,7 +49,7 @@ $setting = @(
 #Disable Microsoft Edge first run wizard
 "DisableMicrosoftEdgeFirstRunWizard",
 # Change default Google Chrome search provider
-"ChangeDefaultGoogleChromeSearchProvider",
+"ChangeDefaultGoogleChromeSearchProviderandskipbrowsersignin",
 # Set-default file associations
 "set-file_associations"
 )
