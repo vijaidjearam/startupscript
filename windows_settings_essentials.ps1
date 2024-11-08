@@ -926,12 +926,17 @@ foreach($setting in $settings){
     $registry.Dispose()
 }
 }
-function ChangeDefaultGoogleChromeSearchProvider{
+function ChangeDefaultGoogleChromeSearchProviderandskipbrowsersignin{
 $settings = 
 [PSCustomObject]@{ # Enable default search providers
     Path  = "SOFTWARE\Policies\Google\Chrome"
     Value = 1
     Name  = "DefaultSearchProviderEnabled"
+},
+[PSCustomObject]@{ # Enable default search providers
+    Path  = "SOFTWARE\Policies\Google\Chrome"
+    Value = 0
+    Name  = "BrowserSignin"
 },
 [PSCustomObject]@{ # Set search provider url
     Path  = "SOFTWARE\Policies\Google\Chrome"
