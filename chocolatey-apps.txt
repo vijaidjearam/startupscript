@@ -30,18 +30,18 @@ sublimetext4
 #totalcommander
 #vlc
 #vscode
-office365
+#office365
 #inkscape
 #office2019
 #projectpro2019
 #visiopro2019
-fusion-inventory
+#fusion-inventory
 #laps-urca
 #insight-student-urca
 #microsoft-teams.install --params "'/AllUsers /NoAutoStart'"
-velociraptor
-zoom
-defprof-urca
+#velociraptor
+#zoom
+#defprof-urca
 #pdfxchangeeditor
 #xmind
-cisco-anyconnect-sbl
+#cisco-anyconnect-sbl
