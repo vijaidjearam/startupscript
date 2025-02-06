@@ -26,6 +26,10 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlo
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonSID -Value 0 -Force
 #Remove-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name DefaultPassword -Force
 }
+function dontdisplaylastusername-on-logon{
+New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name dontdisplaylastusername -Value 1 -Force
+}
+
 function clear-eventlogs{
 Write-host "Cleaning Event Log" 
 Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }
@@ -50,6 +54,7 @@ iex disableautosignin-info
 iex disable-autologon
 # Reset Administrator password to Blank
 Set-LocalUser -name Administrateur -Password ([securestring]::new())
+iex dontdisplaylastusername-on-logon
 Stop-Transcript
 Write-host "The Next step is going to clear Temp File and eventlogs, check the log file for any error message and then continue: "
 Pause
