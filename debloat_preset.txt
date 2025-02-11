@@ -58,8 +58,8 @@ EnableSharingMappedDrives     # DisableSharingMappedDrives
 EnableAdminShares             # DisableAdminShares              
 # DisableFirewall               # EnableFirewall
 HideDefenderTrayIcon          # ShowDefenderTrayIcon
-DisableDefender               # EnableDefender
-DisableDefenderCloud          # EnableDefenderCloud
+# DisableDefender               # EnableDefender
+# DisableDefenderCloud          # EnableDefenderCloud
 # EnableCtrldFolderAccess       # DisableCtrldFolderAccess
 # EnableCIMemoryIntegrity       # DisableCIMemoryIntegrity
 # EnableDefenderAppGuard        # DisableDefenderAppGuard
@@ -90,7 +90,7 @@ EnableSMB1                      # DisableSMB1
 DisableIPv6                   # EnableIPv6
 # DisableNCSIProbe              # EnableNCSIProbe
 # DisableConnectionSharing      # EnableConnectionSharing
-DisableRemoteAssistance         # EnableRemoteAssistance
+# DisableRemoteAssistance         # EnableRemoteAssistance
 EnableRemoteDesktop           # DisableRemoteDesktop
 
 ### Service Tweaks ###
