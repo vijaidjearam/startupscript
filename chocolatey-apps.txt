@@ -32,7 +32,7 @@ sublimetext4
 #vscode
 #office365
 #inkscape
-#office2019
+office2019
 #projectpro2019
 #visiopro2019
 #fusion-inventory
